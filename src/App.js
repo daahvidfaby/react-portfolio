@@ -2,6 +2,45 @@ import React, { Component } from 'react';
 import './App.css';
 import david from './assets/img/david.jpg';
 
+const skills = {
+  "integration" : [
+      {
+        "name": "HTML",
+        "sub": null
+      },
+      {
+        "name": "CSS",
+        "sub": null
+      },
+      {
+        "name": "Librairies CSS",
+        "sub": "Bootstrap, MaterializeCSS"
+      }
+  ],
+  "development" : [
+      {
+        "name": "Javascript",
+        "sub": null
+      },
+      {
+        "name": "Librairies JS",
+        "sub": "jQuery, ReactJS"
+      },
+      {
+        "name": "Node.js",
+        "sub": "NPM, Express"
+      },
+      {
+        "name": "PHP",
+        "sub": "Laravel, Jelix"
+      },
+      {
+        "name": "Rest APIs",
+        "sub": "Création et communication"
+      }
+  ]
+}
+
 
 class Strong extends Component {
   render() {
@@ -12,14 +51,18 @@ class Strong extends Component {
 }
 
 class SkillsBlock extends Component {
+  getSkillsList(skillsName) {
+    return skills[skillsName].map(function(skill) {
+      let sub = (skill.sub != null ? skill.sub:'');
+      return <li>{skill.name} {sub}</li>;
+    });
+  }
   render() {
     return (
       <div className="skills-block">
-        <h3>Intégration</h3>
+        <h3>{this.props.title}</h3>
           <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
+            {this.getSkillsList(this.props.skills)}
           </ul>
       </div>
     );
@@ -83,15 +126,8 @@ class Portfolio extends Component {
           <section className="content-block content-block--dark">
             <article className="article">
               <h2 className="article__title">Compétences</h2>
-              <SkillsBlock/>
-              <div className="skills-block">
-                <h3>Intégration</h3>
-                <ul>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
-                </ul>
-              </div>
+              <SkillsBlock title="Intégration" skills="integration"/>
+              <SkillsBlock title="Développement web" skills="development"/>
               <div className="skills-block">
                 <h3>Intégration</h3>
                 <ul>
