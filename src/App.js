@@ -2,6 +2,69 @@ import React, { Component } from 'react';
 import './App.css';
 import david from './assets/img/david.jpg';
 
+const skills = {
+  "integration" : [
+      {
+        "name": "HTML",
+        "sub": null
+      },
+      {
+        "name": "CSS",
+        "sub": null
+      },
+      {
+        "name": "Librairies CSS",
+        "sub": "Bootstrap, MaterializeCSS"
+      }
+  ],
+  "development" : [
+      {
+        "name": "Javascript",
+        "sub": null
+      },
+      {
+        "name": "Librairies JS",
+        "sub": "jQuery, ReactJS"
+      },
+      {
+        "name": "Node.js",
+        "sub": "NPM, Express"
+      },
+      {
+        "name": "PHP",
+        "sub": "Laravel, Jelix"
+      },
+      {
+        "name": "Rest APIs",
+        "sub": "Création et communication"
+      }
+  ],
+    "automating" : [
+      {
+        "name": "Gulp",
+        "sub": null
+      },
+      {
+        "name": "Webpack",
+        "sub": null
+      },
+      {
+        "name": "Préprocesseurs CSS",
+        "sub": "Less et Sass"
+      },
+  ],
+    "interfaces" : [
+      {
+        "name": "UX Design",
+        "sub": "Réflexion autour de personas, notions d'ergonomie"
+      },
+      {
+        "name": "Maquettes et prototypes",
+        "sub": "Illustrator, Photoshop, Marvel"
+      }
+  ]
+}
+
 
 class Strong extends Component {
   render() {
@@ -12,9 +75,11 @@ class Strong extends Component {
 }
 
 class SkillsBlock extends Component {
-  getSkillsList(skills) {
-    return skills.map(function (skill, index) {
-      return <li classNameme="skills-block__list__item">{skill}</li>;
+  getSkillsList(skillsName) {
+    return skills[skillsName].map(function(skill, index) {
+      let sub = (skill.sub != null ? skill.sub:'');
+      sub = <span className="skills-block__list__sub-item">{sub}</span>
+      return <li key={index}>{skill.name} {sub}</li>;
     });
   }
   render() {
@@ -86,31 +151,10 @@ class Portfolio extends Component {
           <section className="content-block content-block--dark">
             <article className="article">
               <h2 className="article__title">Compétences</h2>
-              <SkillsBlock skills={'HTML', 'CSS', 'Libirairies CSS'}/>
-              <div className="skills-block">
-                <h3>Intégration</h3>
-                <ul>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
-                </ul>
-              </div>
-              <div className="skills-block">
-                <h3>Intégration</h3>
-                <ul>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
-                </ul>
-              </div>
-              <div className="skills-block">
-                <h3>Intégration</h3>
-                <ul>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
-                </ul>
-              </div>
+                <SkillsBlock title="Intégration" skills="integration"/>
+                <SkillsBlock title="Développement web" skills="development"/>
+                <SkillsBlock title="Automatisation" skills="automating"/>
+                <SkillsBlock title="Interfaces" skills="interfaces"/>
             </article>
 
           </section>
