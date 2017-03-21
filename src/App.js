@@ -130,9 +130,9 @@ class Portfolio extends Component {
         <main className="content">
           <section className="intro">
             <div className="intro__text">
-              <p>Bonjour !</p>
-              <p>Je suis David Faby,</p>
-              <h1 className="intro__title">Développeur Front-end</h1>
+              <p className="intro__text__paragraph  intro__text__paragraph--primary">Bonjour !</p>
+              <p className="intro__text__paragraph"><span className="intro__text__paragraph--light">Je suis</span> David Faby,</p>
+              <h1 className="intro__title intro__title--close">Développeur<br/> Front-end</h1>
             </div>
             <div className="intro__pattern">
 

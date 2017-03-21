@@ -1,3 +1,7 @@
+body {
+  font-family: Roboto;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -19,9 +23,9 @@
   text-align: right;
 }
 
-.menu__button__link {
-  /*width: 20%;*/
-}
+/*.menu__button__link {
+  width: 20%;
+}*/
 
 
 
@@ -37,8 +41,40 @@
 .intro {
   background-color: #2DBA69;
   color: #fff;
+  height: calc(90vh - 3rem);
+  display: flex;
+  align-items: center;
+  padding: 0 0.6rem;
+}
+
+.intro__text {
+   font-size: 2.1rem;
+   line-height: 1.4;
+    font-weight: 500;
+}
+
+.intro__text__paragraph {
+  margin-bottom: 0;
+}
+
+.intro__text__paragraph--primary {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.8rem;
+}
+
+.intro__text__paragraph--light {
+  font-weight: lighter;
+  color: #342E39;
 }
 
 .intro__title {
   color: #fff;
+  font-size: 2.1rem;
+}
+
+.intro__title--close {
+  line-height: 1;
+  font-size: 2.2rem;
+  margin-top: 2rem;
 }
