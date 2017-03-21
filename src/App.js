@@ -115,16 +115,16 @@ class Portfolio extends Component {
           </div>
           <nav className="menu">
             <div className="menu__button">
-              <a href="#">
+              <a href="#" className="menu__button__link">
                 <img className="menu__button__icon" src={menu__icon} alt="Menu" />
                 <div className="menu__button__text">Menu</div>
               </a>
             </div>
-              <ul className="menu__list">
-                <li className="menu__list__item">Présentation</li>
-                <li className="menu__list__item">Projets</li>
-                <li className="menu__list__item">Contact</li>
-              </ul>
+            <ul className="menu__list">
+              <li className="menu__list__item">Présentation</li>
+              <li className="menu__list__item">Projets</li>
+              <li className="menu__list__item">Contact</li>
+            </ul>
           </nav>
         </header>
         <main className="content">
@@ -132,7 +132,7 @@ class Portfolio extends Component {
             <div className="intro__text">
               <p>Bonjour !</p>
               <p>Je suis David Faby,</p>
-              <h1 className>Développeur Front-end</h1>
+              <h1 className="intro__title">Développeur Front-end</h1>
             </div>
             <div className="intro__pattern">
 
