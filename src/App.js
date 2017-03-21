@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import david from './assets/img/david.jpg';
+import menu__icon from './assets/img/menu-icon.svg';
 
 const skills = {
   "integration" : [
@@ -74,6 +75,14 @@ class Strong extends Component {
   }
 }
 
+class Button extends Component {
+  render() {
+    return (
+      <a className="button" href={this.props.location}>{this.props.children}</a>
+    );
+  }
+}
+
 class SkillsBlock extends Component {
   getSkillsList(skillsName) {
     return skills[skillsName].map(function(skill, index) {
@@ -105,7 +114,12 @@ class Portfolio extends Component {
             </h2>
           </div>
           <nav className="menu">
-            <div className="menu__button">&nbsp; </div>
+            <div className="menu__button">
+              <a href="#">
+                <img className="menu__button__icon" src={menu__icon} alt="Menu" />
+                <div className="menu__button__text">Menu</div>
+              </a>
+            </div>
               <ul className="menu__list">
                 <li className="menu__list__item">Présentation</li>
                 <li className="menu__list__item">Projets</li>
@@ -158,6 +172,9 @@ class Portfolio extends Component {
             </article>
 
           </section>
+          <div className="home-contact">
+            <Button location="/contact">Contactez-moi</Button>
+          </div>
 
         </main>
       </div>
