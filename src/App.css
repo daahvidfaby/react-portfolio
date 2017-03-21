@@ -1,5 +1,6 @@
-body {
+html {
   font-family: Roboto;
+  font-size: 100%;
 }
 
 .header {
@@ -7,11 +8,21 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 3rem;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
 }
+
+.logo, .menu {
+  width: 100%;
+}
+
 
 .logo__text {
   font-size: 1.5rem;
+  line-height: 1;
+}
+
+.logo__text--green {
+  color: #2DBA69;
 }
 
 .menu__list {
@@ -19,22 +30,47 @@ body {
 }
 
 .menu {
-  width: 30%;
   text-align: right;
 }
 
-/*.menu__button__link {
-  width: 20%;
-}*/
+.menu__button__link {
+  display: block;
+}
 
 
 
 .menu__button__icon, .menu__button__text {
   display: inline-block;
+  vertical-align: middle;
 }
 
 .menu__button__icon {
-  width: 30%;
+  height: 1.1rem;
+}
+
+.menu__button__text {
+  font-size: 1.2rem;
+  padding-left: 0.4rem;
+  color: #342E39;
+}
+
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__layer--front {
+  transform: translateZ(.2px) scale(.8);
 }
 
 
@@ -46,6 +82,8 @@ body {
   align-items: center;
   padding: 0 0.6rem;
 }
+
+
 
 .intro__text {
    font-size: 2.1rem;
@@ -77,4 +115,23 @@ body {
   line-height: 1;
   font-size: 2.2rem;
   margin-top: 2rem;
+}
+
+.intro__title--code::before, .intro__title--code::after {
+  color: #342E39;
+  font-weight: 100;
+}
+
+.intro__title--code::before {
+  content: "<";
+  padding-right: 0.2rem;
+}
+
+.intro__title--code::after {
+  content: "/>";
+  padding-left: 0.2rem;
+}
+
+.content-block--first {
+  margin-top: 100vh;
 }

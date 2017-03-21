@@ -127,18 +127,18 @@ class Portfolio extends Component {
             </ul>
           </nav>
         </header>
-        <main className="content">
-          <section className="intro">
+        <main className="content parallax">
+          <section className="intro parallax__layer parallax__layer--front">
             <div className="intro__text">
               <p className="intro__text__paragraph  intro__text__paragraph--primary">Bonjour !</p>
               <p className="intro__text__paragraph"><span className="intro__text__paragraph--light">Je suis</span> David Faby,</p>
-              <h1 className="intro__title intro__title--close">Développeur<br/> Front-end</h1>
+              <h1 className="intro__title intro__title--close intro__title--code">Développeur<br/> Front-end</h1>
             </div>
             <div className="intro__pattern">
 
             </div>
           </section>
-          <section className="content-block">
+          <section className="content-block content-block--first">
             <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
             <article className="article">
               <h2 className="article__title">Présentation</h2>
