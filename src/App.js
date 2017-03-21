@@ -38,6 +38,30 @@ const skills = {
         "name": "Rest APIs",
         "sub": "Création et communication"
       }
+  ],
+    "automating" : [
+      {
+        "name": "Gulp",
+        "sub": null
+      },
+      {
+        "name": "Webpack",
+        "sub": null
+      },
+      {
+        "name": "Préprocesseurs CSS",
+        "sub": "Less et Sass"
+      },
+  ],
+    "interfaces" : [
+      {
+        "name": "UX Design",
+        "sub": "Réflexion autour de personas, notions d'ergonomie"
+      },
+      {
+        "name": "Maquettes et prototypes",
+        "sub": "Illustrator, Photoshop, Marvel"
+      }
   ]
 }
 
@@ -52,9 +76,10 @@ class Strong extends Component {
 
 class SkillsBlock extends Component {
   getSkillsList(skillsName) {
-    return skills[skillsName].map(function(skill) {
+    return skills[skillsName].map(function(skill, index) {
       let sub = (skill.sub != null ? skill.sub:'');
-      return <li>{skill.name} {sub}</li>;
+      sub = <span className="skills-block__list__sub-item">{sub}</span>
+      return <li key={index}>{skill.name} {sub}</li>;
     });
   }
   render() {
@@ -128,22 +153,8 @@ class Portfolio extends Component {
               <h2 className="article__title">Compétences</h2>
               <SkillsBlock title="Intégration" skills="integration"/>
               <SkillsBlock title="Développement web" skills="development"/>
-              <div className="skills-block">
-                <h3>Intégration</h3>
-                <ul>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
-                </ul>
-              </div>
-              <div className="skills-block">
-                <h3>Intégration</h3>
-                <ul>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
-                </ul>
-              </div>
+              <SkillsBlock title="Automatisation" skills="automating"/>
+              <SkillsBlock title="Interfaces" skills="interfaces"/>
             </article>
 
           </section>
