@@ -83,8 +83,6 @@ html {
   padding: 0 0.6rem;
 }
 
-
-
 .intro__text {
    font-size: 2.1rem;
    line-height: 1.4;
@@ -132,6 +130,15 @@ html {
   padding-left: 0.2rem;
 }
 
+.intro__pattern {
+  background-image: url(./assets/img/pattern.png);
+  position: absolute;
+  bottom: -3rem;
+  height: 3rem;
+  width: 100%;
+  left: 0;
+}
+
 .content-block--first {
-  margin-top: 100vh;
+  margin-top: calc(90vh - 3rem);
 }
