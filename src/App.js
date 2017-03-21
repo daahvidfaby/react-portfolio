@@ -6,20 +6,23 @@ import david from './assets/img/david.jpg';
 class Strong extends Component {
   render() {
     return (
-      <strong className="text--bold">{this.props.content}</strong>
+      <strong className="text--bold">{this.props.children}</strong>
     );
   }
 }
 
 class SkillsBlock extends Component {
+  getSkillsList(skills) {
+    return skills.map(function (skill, index) {
+      return <li classNameme="skills-block__list__item">{skill}</li>;
+    });
+  }
   render() {
     return (
       <div className="skills-block">
-        <h3>Intégration</h3>
-          <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Librairies CSS <span>Bootstrap, MaterializeCSS</span></li>
+        <h3>{this.props.title}</h3>
+          <ul className="skills-block__list">
+            {this.getSkillsList(this.props.skills)}
           </ul>
       </div>
     );
@@ -61,18 +64,18 @@ class Portfolio extends Component {
             <article className="article">
               <h2 className="article__title">Présentation</h2>
               <p className="article__text">
-              Apprenti en <Strong content="développement web"/>, j’aime
+              Apprenti en <Strong>développement web</Strong>, j’aime
               réaliser des sites et des applications web
               interactives et modernes.
-              Plutôt orienté <Strong content="Front-end"/>,
-              je suis <Strong content="polyvalent"/> lors de leur création.
+              Plutôt orienté <Strong>Front-end</Strong>,
+              je suis <Strong>polyvalent</Strong> lors de leur création.
               Pour vous, je saurais à la fois me pencher
               sur la conception, pour réfléchir au
               développement à toutes les étapes d’un
               projet.
-              Que ce soit sur la <Strong content="réflexion"/> sur l’<Strong content="expérience utilisateur" />,
-              l’<Strong content="interface" /> et l’<Strong content="accessibilité" />, ou
-              lors du <Strong content="développement back-end" /> et
+              Que ce soit sur la <Strong>réflexion</Strong> sur l’<Strong>expérience utilisateur</Strong>,
+              l’<Strong>interface</Strong> et l’<Strong>accessibilité</Strong>, ou
+              lors du <Strong>développement back-end</Strong> et
               front-end, je saurais utiliser mes
               compétences pour mener à bien ce projet.
               Je sais m’intégrer à une équipe et à la fois travailler en autonomie.
@@ -83,7 +86,7 @@ class Portfolio extends Component {
           <section className="content-block content-block--dark">
             <article className="article">
               <h2 className="article__title">Compétences</h2>
-              <SkillsBlock/>
+              <SkillsBlock skills={'HTML', 'CSS', 'Libirairies CSS'}/>
               <div className="skills-block">
                 <h3>Intégration</h3>
                 <ul>
