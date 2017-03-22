@@ -137,8 +137,8 @@ html {
 .intro__pattern {
   background-image: url(./assets/img/pattern.png);
   position: absolute;
-  bottom: -7.4rem;
-  height: 11rem;
+  bottom: -25vh;
+  height: 14rem;
   width: 100%;
   left: 0;
 }
