@@ -71,8 +71,12 @@ html {
 
 .parallax__layer--front {
   transform: translateZ(.2px) scale(.8);
+  z-index: 2;
 }
 
+.parallax__layer--back {
+  top: 100vh;
+}
 
 .intro {
   background-color: #2DBA69;
@@ -133,12 +137,8 @@ html {
 .intro__pattern {
   background-image: url(./assets/img/pattern.png);
   position: absolute;
-  bottom: -12rem;
-  height: 12rem;
+  bottom: -7.4rem;
+  height: 11rem;
   width: 100%;
   left: 0;
-}
-
-.content-block--first {
-  margin-top: calc(100vh - 3rem);
 }
