@@ -104,7 +104,7 @@ html {
 }
 
 .intro__text__paragraph--light {
-  font-weight: lighter;
+  font-weight: 300;
   color: #342E39;
 }
 
@@ -121,7 +121,7 @@ html {
 
 .intro__title--code::before, .intro__title--code::after {
   color: #342E39;
-  font-weight: 100;
+  font-weight: 300;
 }
 
 .intro__title--code::before {
@@ -138,7 +138,93 @@ html {
   background-image: url(./assets/img/pattern.png);
   position: absolute;
   bottom: -25vh;
-  height: 14rem;
+  height: 35vh;
   width: 100%;
   left: 0;
+}
+
+.content-block {
+  margin-bottom: 2rem;
+}
+
+.content-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.article {
+  padding: 1rem 1.2rem;
+}
+
+.article--color-invert {
+  background-color: #342E39;
+}
+
+.article--space-bottom {
+  padding-bottom: 4rem;
+}
+
+.article--color-invert .article__title {
+  color: #fff;
+}
+
+
+.article__title {
+  color: #2DBA69;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article__text {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.skills-block__title {
+  color: #2DBA69;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.skills-block__list {
+  color: #fff;
+  list-style-type: none;
+}
+
+.skills-block__list__item {
+  margin-bottom: 0;
+}
+
+.skills-block__list__sub-item {
+  display: block;
+}
+
+.skills-block__list__sub-item--main {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-size: 1.2rem;
+}
+
+.skills-block__list__sub-item--secondary {
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 0.9;
+}
+
+.home-contact {
+  text-align: center;
+}
+
+.button {
+  margin: 0;
+  border: 0;
+  position: relative;
+  top: -1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.button--primary {
+  background-color: #2DBA69; 
 }

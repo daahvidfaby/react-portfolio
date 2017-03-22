@@ -76,9 +76,12 @@ class Strong extends Component {
 }
 
 class Button extends Component {
+  getType(property) {
+    return 'button--' + property;
+  }
   render() {
     return (
-      <a className="button" href={this.props.location}>{this.props.children}</a>
+      <a className={'button ' + this.getType(this.props.type)} href={this.props.location}>{this.props.children}</a>
     );
   }
 }
@@ -87,14 +90,18 @@ class SkillsBlock extends Component {
   getSkillsList(skillsName) {
     return skills[skillsName].map(function(skill, index) {
       let sub = (skill.sub != null ? skill.sub:'');
-      sub = <span className="skills-block__list__sub-item">{sub}</span>
-      return <li key={index}>{skill.name} {sub}</li>;
+      return (
+        <li key={index} className="skills-block__list__item">
+          <span className="skills-block__list__sub-item  skills-block__list__sub-item--main">{skill.name}</span>
+          <span className="skills-block__list__sub-item  skills-block__list__sub-item--secondary">{sub}</span>
+        </li>
+      );
     });
   }
   render() {
     return (
       <div className="skills-block">
-        <h3>{this.props.title}</h3>
+        <h3 className="skills-block__title">{this.props.title}</h3>
           <ul className="skills-block__list">
             {this.getSkillsList(this.props.skills)}
           </ul>
@@ -139,32 +146,32 @@ class Portfolio extends Component {
             </section>
           </div>
           <main className="content parallax__layer parallax__layer--back">
-            <section className="content-block content-block--first">
+            <section className="content-block">
               <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
               <article className="article">
                 <h2 className="article__title">Présentation</h2>
                 <p className="article__text">
                 Apprenti en <Strong>développement web</Strong>, j’aime
                 réaliser des sites et des applications web
-                interactives et modernes.
-                Plutôt orienté <Strong>Front-end</Strong>,
+                interactives et modernes.</p>
+                <p className="article__text">Plutôt orienté <Strong>Front-end</Strong>,
                 je suis <Strong>polyvalent</Strong> lors de leur création.
                 Pour vous, je saurais à la fois me pencher
                 sur la conception, pour réfléchir au
                 développement à toutes les étapes d’un
-                projet.
-                Que ce soit sur la <Strong>réflexion</Strong> sur l’<Strong>expérience utilisateur</Strong>,
+                projet.</p>
+                <p className="article__text">Que ce soit sur la <Strong>réflexion</Strong> sur l’<Strong>expérience utilisateur</Strong>,
                 l’<Strong>interface</Strong> et l’<Strong>accessibilité</Strong>, ou
                 lors du <Strong>développement back-end</Strong> et
                 front-end, je saurais utiliser mes
-                compétences pour mener à bien ce projet.
-                Je sais m’intégrer à une équipe et à la fois travailler en autonomie.
+                compétences pour mener à bien ce projet.</p>
+                <p className="article__text">Je sais m’intégrer à une équipe et à la fois travailler en autonomie.
                 Ensemble, nous pourrons créer l’avenir de l’internet.
                 </p>
               </article>
             </section>
-            <section className="content-block content-block--dark">
-              <article className="article">
+            <section className="content-block">
+              <article className="article article--color-invert article--space-bottom">
                 <h2 className="article__title">Compétences</h2>
                   <SkillsBlock title="Intégration" skills="integration"/>
                   <SkillsBlock title="Développement web" skills="development"/>
@@ -174,7 +181,7 @@ class Portfolio extends Component {
 
             </section>
             <div className="home-contact">
-              <Button location="/contact">Contactez-moi</Button>
+              <Button location="/contact" type="primary">Contactez-moi !</Button>
             </div>
 
           </main>
