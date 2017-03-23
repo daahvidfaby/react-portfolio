@@ -138,7 +138,7 @@ html {
   background-image: url(./assets/img/pattern.png);
   position: absolute;
   bottom: -25vh;
-  height: 35vh;
+  height: 35.2vh;
   width: 100%;
   left: 0;
 }
@@ -226,5 +226,5 @@ html {
 }
 
 .button--primary {
-  background-color: #2DBA69; 
+  background-color: #2DBA69;
 }
