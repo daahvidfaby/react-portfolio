@@ -9,6 +9,7 @@ html {
   align-items: center;
   height: 3rem;
   padding: 0 0.5rem;
+  border-bottom: 1px solid #BAB8BC;
 }
 
 .logo, .menu {
@@ -142,6 +143,24 @@ html {
   width: 100%;
   left: 0;
 }
+
+.page-header {
+  line-height: 1;
+}
+
+.page-header__top, .page-header__bottom {
+  padding: 0 0.6rem;
+}
+
+.page-header__top {
+    height: 25vh;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
 
 .content-block {
   margin-bottom: 2rem;

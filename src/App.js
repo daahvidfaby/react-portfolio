@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Link
 } from 'react-router-dom'
 import './App.css';
 import david from './assets/img/david.jpg';
@@ -114,14 +115,40 @@ class SkillsBlock extends Component {
   }
 }
 
+class Logo extends Component {
+  render() {
+    return (
+      <div className="logo">
+        <Link to="/">      
+          <h2 className="logo__text">
+            David <span className="logo__text--green">Faby</span>
+          </h2>
+        </Link>  
+      </div>
+    );
+  }
+}
+
+class Article extends Component {
+  render() {
+    return (
+      <article className="article">
+        <h2 className="article__title"> {this.props.title}</h2>
+        
+        {this.props.children}
+        
+      </article>
+    );
+  }
+}
+
 class HomeContent extends Component {
   render() {
     return (
       <main className="content parallax__layer parallax__layer--back">
             <section className="content-block">
               <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
-              <article className="article">
-                <h2 className="article__title">Présentation</h2>
+             <Article title="Présentation">
                 <p className="article__text">
                 Apprenti en <Strong>développement web</Strong>, j’aime
                 réaliser des sites et des applications web
@@ -140,7 +167,7 @@ class HomeContent extends Component {
                 <p className="article__text">Je sais m’intégrer à une équipe et à la fois travailler en autonomie.
                 Ensemble, nous pourrons créer l’avenir de l’internet.
                 </p>
-              </article>
+              </Article>
             </section>
             <section className="content-block">
               <article className="article article--color-invert article--space-bottom">
@@ -167,9 +194,9 @@ class ContactContent extends Component {
       <main className="content parallax__layer parallax__layer--back">
             <section className="content-block">
               <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
-              <article className="article">
-                <h2 className="article__title">Présentation</h2>
-              </article>
+              <Article>
+              
+              </ Article>
             </section>
             <section className="content-block">
               <article className="article article--color-invert article--space-bottom">
@@ -186,6 +213,21 @@ class ContactContent extends Component {
             </div>
 
           </main>
+    );
+  }
+}
+
+class PageHeader extends Component {
+  render() {
+    return (
+      <section className="page-header">
+        <div className="page-header__top">
+          <span className="page-header__top__text">Me</span>
+        </div>
+        <div className="page-header__bottom">
+          <h1 className="page-header__bottom__title">Contacter</h1>
+        </div>
+      </section>
     );
   }
 }
@@ -214,11 +256,7 @@ class Portfolio extends Component {
           <div className="parallax">
             <div className="parallax__layer parallax__layer--front">
               <header className="header">
-                <div className="logo">
-                  <h2 className="logo__text">
-                    David <span className="logo__text--green">Faby</span>
-                  </h2>
-                </div>
+                <Logo />
                 <nav className="menu">
                   <div className="menu__button">
                     <a href="#" className="menu__button__link">
@@ -235,6 +273,7 @@ class Portfolio extends Component {
               </header>
               
               <Route exact path="/" component={HomeIntro} />
+              <Route path="/contact" component={PageHeader} />
               
             </div>
      
