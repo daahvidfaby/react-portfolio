@@ -189,6 +189,7 @@ html {
 .skills-block__list {
   color: #fff;
   list-style-type: none;
+  padding-left: 0.5rem;
 }
 
 .skills-block__list__item {
@@ -210,6 +211,7 @@ html {
   font-weight: 300;
   font-style: italic;
   line-height: 0.9;
+  margin-bottom: 0.6rem;
 }
 
 .home-contact {
@@ -227,4 +229,10 @@ html {
 
 .button--primary {
   background-color: #2DBA69;
+}
+
+.button.button--primary:hover,
+.button.button--primary:active,
+.button--primary:focus {
+  background-color: #ff9800;
 }
