@@ -146,6 +146,7 @@ html {
 
 .page-header {
   line-height: 1;
+  font-weight: 600;
 }
 
 .page-header__top, .page-header__bottom {
@@ -160,7 +161,27 @@ html {
     justify-content: flex-end;
 }
 
+.page-header__top__text {
+    line-height: 0.7;
+}
 
+.page-header__bottom {
+  height: 75vh;
+  color: #fff;
+  background-color: #2DBA69;
+}
+
+.page-header__bottom__title {
+  color: #fff;
+  line-height: 1.5;
+}
+
+.page-header__bottom__text {
+    font-size: 1.3rem;
+    line-height: 1.3em;
+    font-weight: 100;
+    font-style: italic;
+}
 
 .content-block {
   margin-bottom: 2rem;

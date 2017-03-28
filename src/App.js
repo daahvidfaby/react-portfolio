@@ -193,24 +193,11 @@ class ContactContent extends Component {
     return (
       <main className="content parallax__layer parallax__layer--back">
             <section className="content-block">
-              <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
-              <Article>
-              
+              <Article title="Formulaire de contact">
+                
               </ Article>
             </section>
-            <section className="content-block">
-              <article className="article article--color-invert article--space-bottom">
-                <h2 className="article__title">Compétences</h2>
-                  <SkillsBlock title="Intégration" skills="integration"/>
-                  <SkillsBlock title="Développement web" skills="development"/>
-                  <SkillsBlock title="Automatisation" skills="automating"/>
-                  <SkillsBlock title="Interfaces" skills="interfaces"/>
-              </article>
-
-            </section>
-            <div className="home-contact">
-              <Button location="/contact" type="primary">Contactez-moi !</Button>
-            </div>
+            
 
           </main>
     );
@@ -226,6 +213,9 @@ class PageHeader extends Component {
         </div>
         <div className="page-header__bottom">
           <h1 className="page-header__bottom__title">Contacter</h1>
+          <div className="page-header__bottom__text">
+            Et si on apprenait à mieux se connaître ?
+          </div>
         </div>
       </section>
     );
