@@ -129,11 +129,61 @@ class Logo extends Component {
   }
 }
 
-class Article extends Component {
+class Form extends Component {
   render() {
     return (
-      <article className="article">
-        <h2 className="article__title"> {this.props.title}</h2>
+      <form className="form" method="post" action="/postMessage">
+        {this.props.children}
+      </form>
+    );
+  }
+}
+
+class Field extends Component {
+  getField(props) {
+    let field;
+    switch(props.type) {
+      case 'textarea':
+        field = (<textarea className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} /> );  
+      break;
+      case 'text':
+      default:
+        field = (<input type={props.type} className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} /> );
+        break;
+    }
+    
+    return (
+      <div className="form__field">
+        <label htmlFor={props.name} className="form__field__label">{props.title}</label>
+        {field}
+      </div>
+    )
+  }
+  render() {
+    return this.getField(this.props);
+  }
+}
+
+
+
+
+class Article extends Component {
+  getHtmlTitle(title) {
+    if(title !== undefined) {
+      return (<h2 className="article__title"> {title}</h2>)
+    }
+  }
+  getClasses(classes) {
+    if(classes === undefined) {
+      return '';
+    }
+    return classes;
+  }
+  render() {
+    return (
+      <article className={"article " + this.getClasses(this.props.class)}>
+
+        { this.getHtmlTitle(this.props.title) }
         
         {this.props.children}
         
@@ -170,16 +220,15 @@ class HomeContent extends Component {
               </Article>
             </section>
             <section className="content-block">
-              <article className="article article--color-invert article--space-bottom">
-                <h2 className="article__title">Compétences</h2>
+              <Article title="Compétences" class="article--color-invert article--space-bottom">
                   <SkillsBlock title="Intégration" skills="integration"/>
                   <SkillsBlock title="Développement web" skills="development"/>
                   <SkillsBlock title="Automatisation" skills="automating"/>
                   <SkillsBlock title="Interfaces" skills="interfaces"/>
-              </article>
+              </Article>
 
             </section>
-            <div className="home-contact">
+            <div className="button-container">
               <Button location="/contact" type="primary">Contactez-moi !</Button>
             </div>
 
@@ -193,9 +242,40 @@ class ContactContent extends Component {
     return (
       <main className="content parallax__layer parallax__layer--back">
             <section className="content-block">
-              <Article title="Formulaire de contact">
-                
+              <Article title="Adresse">
+                <div className="article__text">
+                  <Strong>75, Rue d'Ostwald</Strong>
+                </div>
+                <div className="article__text">
+                  <Strong>67200 Strasbourg</Strong>
+                </div>
               </ Article>
+              <Article title="En ligne">
+                <div className="article__text">
+                  <Button type="icon" location="https://github.com/daahvidfaby">
+                    <i className="fa fa-github" aria-hidden="true"></i>
+                  </Button>
+                  <Button type="icon" location="https://twitter.com/daahvidFaby">
+                    <i className="fa fa-twitter" aria-hidden="true"></i>
+                  </Button>
+                </div>
+              </ Article>
+              <Article title="Par mail">
+                <div className="article__text">
+                  <Strong>david.faby29@gmail.com</Strong>
+                </div>
+              </ Article>
+              <Form>
+                <Article class="article--color-invert article--space-bottom">
+                    <Field type="text" name="firstname" title="Nom" />
+                    <Field type="text" name="lastname" title="Prénom" />
+                    <Field type="text" name="email" title="E-mail" />
+                    <Field type="textarea" name="message" title="Message" />
+                </ Article>
+                <div className="button-container">
+                  <Button type="primary">C'est parti !</Button>
+                </div>
+              </Form>
             </section>
             
 
@@ -281,6 +361,3 @@ class Portfolio extends Component {
 
 
 export default Portfolio;
-
-
-/*export default Portfolio;*/

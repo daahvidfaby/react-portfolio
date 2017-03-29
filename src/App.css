@@ -162,7 +162,7 @@ html {
 }
 
 .page-header__top__text {
-    line-height: 0.7;
+    line-height: 2.5rem;
 }
 
 .page-header__bottom {
@@ -181,7 +181,7 @@ html {
     line-height: 1.3em;
     font-weight: 100;
     font-style: italic;
-}
+} 
 
 .content-block {
   margin-bottom: 2rem;
@@ -196,7 +196,8 @@ html {
 }
 
 .article--color-invert {
-  background-color: #342E39;
+    background-color: #342E39;
+    color: #2dba69;
 }
 
 .article--space-bottom {
@@ -218,6 +219,13 @@ html {
 .article__text {
   font-size: 0.95rem;
   margin-bottom: 0.4rem;
+}
+
+.article__text--uppercase {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-variant-caps: all-small-caps;
+  font-size: 1.2rem;
 }
 
 .skills-block__title {
@@ -254,7 +262,7 @@ html {
   margin-bottom: 0.6rem;
 }
 
-.home-contact {
+.button-container {
   text-align: center;
 }
 
@@ -271,8 +279,36 @@ html {
   background-color: #2DBA69;
 }
 
+.button--icon,
+.button--icon:hover,
+.button--icon:focus,
+.button--icon:active {
+  background-color: transparent;
+  color: #000;
+  font-size: 3rem;
+  line-height: 1;
+  top: 0;
+}
+
 .button.button--primary:hover,
 .button.button--primary:active,
 .button--primary:focus {
   background-color: #ff9800;
+}
+
+
+.form__field .form__field__input {
+    width: 100%;
+}
+
+.form__field__label {
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 0.1rem;
+}
+
+.form__field__input--textarea {
+    height: 10rem;
 }
