@@ -312,3 +312,41 @@ html {
 .form__field__input--textarea {
     height: 10rem;
 }
+
+.dialog {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    color: #fff;
+}
+
+.dialog__close {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.8rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dialog__close__link,
+.dialog__close__link:hover,
+.dialog__close__link:active,
+.dialog__close__link:focus{
+  color: #fff;
+}
+
+.dialog__message {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 1.2em;
+    padding: 0.6rem 1rem;
+}
+
+.dialog--error {
+    background-color: #ff8a00;
+}
+
+.dialog--success {
+    background-color: #24ce6c;
+}
