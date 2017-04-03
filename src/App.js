@@ -4,6 +4,18 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+
+import PageHeader from './components/PageHeader';
+import Article from './components/Article';
+import Form from './components/Form';
+import Strong from './components/Strong';
+import Logo from './components/Logo';
+import Button from './components/Button';
+import Dialog from './components/Dialog';
+import Field from './components/Field';
+import SkillsBlock from './components/SkillsBlock';
+import ScrollToTopOnMount from './components/ScrollToTopOnMount';
+
 import './App.css';
 import david from './assets/img/david.jpg';
 import menu__icon from './assets/img/menu-icon.svg';
@@ -72,173 +84,62 @@ const skills = {
 }
 
 
-class Strong extends Component {
-  render() {
-    return (
-      <strong className="text--bold">{this.props.children}</strong>
-    );
-  }
-}
-
-class Button extends Component {
-  getType(property) {
-    return 'button--' + property;
-  }
-  render() {
-    return (
-      <a className={'button ' + this.getType(this.props.type)} href={this.props.location}>{this.props.children}</a>
-    );
-  }
-}
-
-class SkillsBlock extends Component {
-  getSkillsList(skillsName) {
-    return skills[skillsName].map(function(skill, index) {
-      let sub = (skill.sub != null ? skill.sub:'');
-      return (
-        <li key={index} className="skills-block__list__item">
-          <span className="skills-block__list__sub-item  skills-block__list__sub-item--main">{skill.name}</span>
-          <span className="skills-block__list__sub-item  skills-block__list__sub-item--secondary">{sub}</span>
-        </li>
-      );
-    });
-  }
-  render() {
-    return (
-      <div className="skills-block">
-        <h3 className="skills-block__title">{this.props.title}</h3>
-          <ul className="skills-block__list">
-            {this.getSkillsList(this.props.skills)}
-          </ul>
-      </div>
-    );
-  }
-}
-
-class Logo extends Component {
-  render() {
-    return (
-      <div className="logo">
-        <Link to="/">      
-          <h2 className="logo__text">
-            David <span className="logo__text--green">Faby</span>
-          </h2>
-        </Link>  
-      </div>
-    );
-  }
-}
-
-class Form extends Component {
-  render() {
-    return (
-      <form className="form" method="post" action="/postMessage">
-        {this.props.children}
-      </form>
-    );
-  }
-}
-
-class Field extends Component {
-  getField(props) {
-    let field;
-    switch(props.type) {
-      case 'textarea':
-        field = (<textarea className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} /> );  
-      break;
-      case 'text':
-      default:
-        field = (<input type={props.type} className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} /> );
-        break;
-    }
-    
-    return (
-      <div className="form__field">
-        <label htmlFor={props.name} className="form__field__label">{props.title}</label>
-        {field}
-      </div>
-    )
-  }
-  render() {
-    return this.getField(this.props);
-  }
-}
-
-class Dialog extends Component {
-  render() {
-    return (
-      <div className={"dialog dialog--" + this.props.type}>
-        <div className="dialog__close">
-          <a href="#" className="dialog__close__link">
-            <i className="fa fa-times" aria-hidden="true"></i>
-          </a>
-        
-        </div>
-        <div className="dialog__message">{this.props.children}</div>
-      </div>
-    );
-  }
-}
 
 
-class Article extends Component {
-  getHtmlTitle(title) {
-    if(title !== undefined) {
-      return (<h2 className="article__title"> {title}</h2>)
-    }
-  }
-  getClasses(classes) {
-    if(classes === undefined) {
-      return '';
-    }
-    return classes;
-  }
-  render() {
-    return (
-      <article className={"article " + this.getClasses(this.props.class)}>
 
-        { this.getHtmlTitle(this.props.title) }
-        
-        {this.props.children}
-        
-      </article>
-    );
-  }
-}
+
+
+
 
 class HomeContent extends Component {
   render() {
     return (
       <main className="content parallax__layer parallax__layer--back">
             <section className="content-block">
-              <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
-             <Article title="Présentation">
-                <p className="article__text">
-                Apprenti en <Strong>développement web</Strong>, j’aime
-                réaliser des sites et des applications web
-                interactives et modernes.</p>
-                <p className="article__text">Plutôt orienté <Strong>Front-end</Strong>,
-                je suis <Strong>polyvalent</Strong> lors de leur création.
-                Pour vous, je saurais à la fois me pencher
-                sur la conception, pour réfléchir au
-                développement à toutes les étapes d’un
-                projet.</p>
-                <p className="article__text">Que ce soit sur la <Strong>réflexion</Strong> sur l’<Strong>expérience utilisateur</Strong>,
-                l’<Strong>interface</Strong> et l’<Strong>accessibilité</Strong>, ou
-                lors du <Strong>développement back-end</Strong> et
-                front-end, je saurais utiliser mes
-                compétences pour mener à bien ce projet.</p>
-                <p className="article__text">Je sais m’intégrer à une équipe et à la fois travailler en autonomie.
-                Ensemble, nous pourrons créer l’avenir de l’internet.
-                </p>
-              </Article>
+              <div className="grid grid--reverse--md">
+                <div className="grid__column--12 grid__column--6--md">
+                  <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
+                </div>
+                <div className="grid__column--12 grid__column--6--md">
+                  <Article title="Présentation">
+                    <p className="article__text">
+                    Apprenti en <Strong>développement web</Strong>, j’aime
+                    réaliser des sites et des applications web
+                    interactives et modernes.</p>
+                    <p className="article__text">Plutôt orienté <Strong>Front-end</Strong>,
+                    je suis <Strong>polyvalent</Strong> lors de leur création.
+                    Pour vous, je saurais à la fois me pencher
+                    sur la conception, pour réfléchir au
+                    développement à toutes les étapes d’un
+                    projet.</p>
+                    <p className="article__text">Que ce soit sur la <Strong>réflexion</Strong> sur l’<Strong>expérience utilisateur</Strong>,
+                    l’<Strong>interface</Strong> et l’<Strong>accessibilité</Strong>, ou
+                    lors du <Strong>développement back-end</Strong> et
+                    front-end, je saurais utiliser mes
+                    compétences pour mener à bien ce projet.</p>
+                    <p className="article__text">Je sais m’intégrer à une équipe et à la fois travailler en autonomie.
+                    Ensemble, nous pourrons créer l’avenir de l’internet.
+                    </p>
+                  </Article>
+                </div>
+              </div>  
             </section>
             <section className="content-block">
-              <Article title="Compétences" class="article--color-invert article--space-bottom">
-                  <SkillsBlock title="Intégration" skills="integration"/>
-                  <SkillsBlock title="Développement web" skills="development"/>
-                  <SkillsBlock title="Automatisation" skills="automating"/>
-                  <SkillsBlock title="Interfaces" skills="interfaces"/>
+              <Article title="Compétences" class="grid article--color-invert article--space-bottom">
+                <div className="grid">
+                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                    <SkillsBlock title="Intégration" skills={skills['integration']}/>
+                  </div> 
+                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                    <SkillsBlock title="Développement web" skills={skills['development']}/>
+                  </div>
+                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                    <SkillsBlock title="Automatisation" skills={skills['automating']}/>
+                  </div>
+                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                    <SkillsBlock title="Interfaces" skills={skills['interfaces']}/>
+                  </div>
+                </div>
               </Article>
 
             </section>
@@ -251,10 +152,12 @@ class HomeContent extends Component {
   }
 }
 
+
 class ContactContent extends Component {
   render() {
     return (
       <main className="content parallax__layer parallax__layer--back">
+      
             <section className="content-block">
               <Article title="Adresse">
                 <div className="article__text">
@@ -291,70 +194,159 @@ class ContactContent extends Component {
                 </div>
               </Form>
             </section>
-            
 
           </main>
     );
   }
 }
 
-class PageHeader extends Component {
+
+
+class HomeIntro extends Component {
+  constructor() {
+    super();
+    this.state = {
+      translateTopPanel: 0
+    };
+    this.setParallaxProps = this.setParallaxProps.bind(this);
+    this.startAnimation = this.startAnimation.bind(this);
+    this.startAnimation();
+    
+  } 
+  startAnimation() {
+    
+    setInterval(() => {
+      if(window.scrollY < window.innerHeight) {
+        this.setParallaxProps();
+      }
+    }, 10);
+  }
+  setParallaxProps() {
+    
+    window.requestAnimationFrame(() => {
+      this.setState(() => {
+        return  {
+          translateTopPanel: ((window.scrollY * - 1) /3.7)
+        };
+      });
+    });
+  }
   render() {
     return (
-      <section className="page-header">
-        <div className="page-header__top">
-          <span className="page-header__top__text">Me</span>
+      <section className="intro grid">
+        <div className="intro__text grid__column--12 grid__column--6--md">
+          <p className="intro__text__paragraph  intro__text__paragraph--primary">Bonjour !</p>
+          <p className="intro__text__paragraph"><span className="intro__text__paragraph--light">Je suis</span> David Faby,</p>
+          <h1 className="intro__title intro__title--close intro__title--code">Développeur<br/> Front-end</h1>
         </div>
-        <div className="page-header__bottom">
-          <h1 className="page-header__bottom__title">Contacter</h1>
-          <div className="page-header__bottom__text">
-            Et si on apprenait à mieux se connaître ?
-          </div>
-        </div>
+        <div className="intro__pattern grid__column--12 grid__column--6--md" style={{top : this.state.translateTopPanel +"px"}}></div>
       </section>
     );
   }
 }
 
-class HomeIntro extends Component {
+
+class Menu extends Component {
+  constructor() {
+      super();
+      this.state = {
+          panelClassHandler: 'js-panel-handler',
+      }
+      this.handlePanel = this.handlePanel.bind(this);
+  }
+  componentDidMount() {
+     if(this.state.panel === undefined) {
+      const panel = document.querySelector('.' + this.state.panelClassHandler);
+      this.setState(() => {
+        return { 'panel' : panel };
+      })
+    }
+  }
+  handlePanel() {
+    if(this.state.display === true) {
+      this.state.panel.classList.remove('js-display');
+      this.setState(() => {
+        return { 'display' :  false };
+      });
+    } else {
+      this.state.panel.classList.add('js-display');
+      this.setState(() => {
+        return { 'display' :  true };
+      });
+    }
+  }
   render() {
     return (
-      <section className="intro">
-        <div className="intro__text">
-          <p className="intro__text__paragraph  intro__text__paragraph--primary">Bonjour !</p>
-          <p className="intro__text__paragraph"><span className="intro__text__paragraph--light">Je suis</span> David Faby,</p>
-          <h1 className="intro__title intro__title--close intro__title--code">Développeur<br/> Front-end</h1>
+    
+      <nav className="menu">
+        <div className="menu__button">
+          <a href="#" className="menu__button__link " onClick={this.handlePanel}>
+            <img className="menu__button__icon" src={menu__icon} alt="Menu" />
+            <div className="menu__button__text">Menu</div>
+          </a>
         </div>
-        <div className="intro__pattern"></div>
-      </section>
+        <ul className={"menu__list " + this.state.panelClassHandler}>
+          <li className="menu__list__item">
+            <Link to="/" className="menu__list__link" onClick={this.handlePanel}>Présentation</Link>
+          </li>
+          <li className="menu__list__item">
+            <Link to="/projets" className="menu__list__link" onClick={this.handlePanel}>Projets</Link>
+          </li>
+          <li className="menu__list__item">
+            <Link to="/contact" className="menu__list__link" onClick={this.handlePanel}>Contact</Link>
+          </li>
+        </ul>
+      </nav>
+    
     );
   }
 }
 
 
 class Portfolio extends Component {
+  constructor() {
+    super();
+    this.state = {
+      translateTopPanel: 0
+    };
+    this.setParallaxProps = this.setParallaxProps.bind(this);
+    this.startAnimation = this.startAnimation.bind(this);
+    this.startAnimation();
+    
+  }
+  startAnimation() {
+    
+    setInterval(() => {
+     if(window.innerWidth < 768) {
+      console.log(window.innerWidth);
+        if(window.scrollY < window.innerHeight) {
+          this.setParallaxProps();
+        }
+      }
+    }, 10);
+  }
+  setParallaxProps() {
+    
+    window.requestAnimationFrame(() => {
+      this.setState(() => {
+        return  {
+          translateTopPanel: ((window.scrollY * - 1) /3.7)
+        };
+      });
+    });
+  }
+  
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="wrapper">
+          <header className="header">
+            <Logo />
+            <Menu />
+          </header>
           <div className="parallax">
-            <div className="parallax__layer parallax__layer--front">
-              <header className="header">
-                <Logo />
-                <nav className="menu">
-                  <div className="menu__button">
-                    <a href="#" className="menu__button__link">
-                      <img className="menu__button__icon" src={menu__icon} alt="Menu" />
-                      <div className="menu__button__text">Menu</div>
-                    </a>
-                  </div>
-                  <ul className="menu__list">
-                    <li className="menu__list__item">Présentation</li>
-                    <li className="menu__list__item">Projets</li>
-                    <li className="menu__list__item">Contact</li>
-                  </ul>
-                </nav>
-              </header>
+            <div className="parallax__layer parallax__layer--front" style={{top : this.state.translateTopPanel +"px"}}>
+              
               
               <Route exact path="/" component={HomeIntro} />
               <Route path="/contact" component={PageHeader} />
@@ -363,7 +355,7 @@ class Portfolio extends Component {
      
      
             <Route exact path="/" component={HomeContent} />
-            <Route path="/contact" component={ContactContent} />
+            <Route path="/contact" component={ContactContent} topTitle="Me" mainTitle="Contacter"/>
            
           </div>
         </div>

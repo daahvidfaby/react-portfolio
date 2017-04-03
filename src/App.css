@@ -10,6 +10,11 @@ html {
   height: 3rem;
   padding: 0 0.5rem;
   border-bottom: 1px solid #BAB8BC;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #fff;
 }
 
 .logo, .menu {
@@ -28,6 +33,30 @@ html {
 
 .menu__list {
   display: none;
+  position: absolute;
+  top: 3rem;
+  right: -100vw;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  height: calc(100vh - 3rem);
+  list-style-type: none;
+  padding-right: 2rem;
+  font-size: 1.8rem;
+  transition: transform 0.2s;
+}
+
+.menu__list.js-display {
+  transform: translateX(-100vw);
+}
+
+.menu__list__item {
+  margin-top: 2rem;
+}
+
+.menu__list__link {
+  color: #000;
 }
 
 .menu {
@@ -58,11 +87,20 @@ html {
 .parallax {
   perspective: 1px;
   height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
+/*  overflow-x: hidden;
+  overflow-y: auto;*/
 }
 
 .parallax__layer {
+/*  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;*/
+}
+
+.parallax__layer--front {
+  z-index: 2;
   position: absolute;
   top: 0;
   right: 0;
@@ -70,28 +108,24 @@ html {
   left: 0;
 }
 
-.parallax__layer--front {
-  transform: translateZ(.2px) scale(.8);
-  z-index: 2;
-}
-
 .parallax__layer--back {
-  top: 100vh;
+  padding-top: 100vh;
 }
 
 .intro {
-  background-color: #2DBA69;
   color: #fff;
-  height: calc(90vh - 3rem);
-  display: flex;
-  align-items: center;
-  padding: 0 0.6rem;
 }
 
 .intro__text {
-   font-size: 2.1rem;
-   line-height: 1.4;
-    font-weight: 500;
+  background-color: #2DBA69;
+  font-size: 2.1rem;
+  line-height: 1.4;
+  font-weight: 500;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.6rem;
 }
 
 .intro__text__paragraph {
@@ -137,11 +171,8 @@ html {
 
 .intro__pattern {
   background-image: url(./assets/img/pattern.png);
-  position: absolute;
-  bottom: -25vh;
   height: 35.2vh;
   width: 100%;
-  left: 0;
 }
 
 .page-header {
@@ -350,3 +381,23 @@ html {
 .dialog--success {
     background-color: #24ce6c;
 }
+
+
+
+@media screen and (min-width: 768px) {
+  .intro__text {
+    padding: 0 4rem;
+  }
+  .grid--reverse--md {
+    flex-direction: row-reverse;
+  }
+  .intro__pattern {
+    position: absolute;
+    height: 125vh;
+    right: 0;
+  }
+} 
+
+@media screen and (min-width: 991px) {
+  
+} 
