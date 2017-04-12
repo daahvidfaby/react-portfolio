@@ -157,7 +157,7 @@ class HomeContent extends Component {
 
 const projectsSlides = [
   {
-    image: 'assets//1.png',
+    image: slide1,
     title : 'React Gmail',
     url : 'https://github.com/daahvidfaby/project-react',
     description: 'Lorem ipsum'
@@ -177,6 +177,9 @@ class ProjectsSlider extends Component {
     this.state = {
       actualSlideNumber : 0,
     }
+    this.goToSlide = this.goToSlide.bind(this);
+    this.previousSlide = this.previousSlide.bind(this);
+    this.nextSlide = this.nextSlide.bind(this);
   }
   componentWillMount() {
     this.setState(() => {
@@ -189,8 +192,36 @@ class ProjectsSlider extends Component {
     }
     return projectsSlides[slideNumber];
   }
+  goToSlide(number) {
+    console.log(number)
+    this.setState(() => {
+      return {
+        actualSlideNumber : number
+      }
+    });
+  }
+  previousSlide() {
+    let number;
+    if(this.state.actualSlideNumber <= 0) {
+      number = projectsSlides.length - 1;
+    } else {
+      number = this.state.actualSlideNumber - 1; 
+    }
+    this.goToSlide(number)
+  }
+  nextSlide() {
+    let number;
+    if(this.state.actualSlideNumber >= projectsSlides.length - 1) {
+      number = 0;
+    } else {
+      number = this.state.actualSlideNumber + 1; 
+    }
+    console.log(number)
+    
+    this.goToSlide(number)
+  }
   render() {
-    const slide = this.getSlide(this.state.slideNumber);
+    const slide = this.getSlide(this.state.actualSlideNumber);
     return (
       <div className="slider">
         
@@ -201,11 +232,26 @@ class ProjectsSlider extends Component {
           </div>
           
           <div className="slider__controls">
-          
+          <Button type="icon" >
+            <i className="fa fa-chevron-left" aria-hidden="true" onClick={ this.previousSlide }></i>
+          </Button>
+          <Button type="icon">
+            <i className="fa fa-chevron-right" aria-hidden="true"  onClick={ this.nextSlide }></i>
+          </Button>
           </div>
         
         </Article>
-      
+        
+        <div className="button-container">
+          <Button type="primary" location={slide.url}>Voir sur github</Button>
+        </div>
+        
+        
+        <Article title="Description" class="article--space-bottom">
+        
+          <p className="article__text">{slide.description}</p>
+        
+        </Article>
       </div>  
     );
   }

@@ -307,7 +307,8 @@ html {
   top: -1.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  transition: all 0.25s
+  transition: all 0.25s;
+  cursor: pointer;
 }
 
 .button--primary {
@@ -385,6 +386,20 @@ html {
 .dialog--success {
     background-color: #24ce6c;
 }
+
+
+.slider__controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.slider__controls .button--icon{
+  color: #fff;
+}
+
+
+
 
 
 
