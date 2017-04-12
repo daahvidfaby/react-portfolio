@@ -19,6 +19,7 @@ import ScrollToTopOnMount from './components/ScrollToTopOnMount';
 import './App.css';
 import david from './assets/img/david.jpg';
 import menu__icon from './assets/img/menu-icon.svg';
+import slide1 from './assets/img/1.jpg';
 
 const skills = {
   "integration" : [
@@ -94,7 +95,8 @@ const skills = {
 class HomeContent extends Component {
   render() {
     return (
-      <main className="content parallax__layer parallax__layer--back">
+      <main className="content">
+        <ScrollToTopOnMount/>
             <section className="content-block">
               <div className="grid grid--reverse--md">
                 <div className="grid__column--12 grid__column--6--md">
@@ -153,46 +155,137 @@ class HomeContent extends Component {
 }
 
 
+const projectsSlides = [
+  {
+    image: 'assets//1.png',
+    title : 'React Gmail',
+    url : 'https://github.com/daahvidfaby/project-react',
+    description: 'Lorem ipsum'
+  },
+  {
+    image: '/2.png',
+    title : 'Test',
+    url : 'https://github.com/daahvidfaby/react-portfolio',
+    description: 'Lorem ipsum 2'
+  }
+];
+
+
+class ProjectsSlider extends Component {
+  constructor() {
+    super();
+    this.state = {
+      actualSlideNumber : 0,
+    }
+  }
+  componentWillMount() {
+    this.setState(() => {
+      return { slide : this.getSlide(this.state.actualSlideNumber) };
+    });
+  }
+  getSlide(slideNumber) {
+    if(projectsSlides[slideNumber] === undefined) {
+      return false;
+    }
+    return projectsSlides[slideNumber];
+  }
+  render() {
+    const slide = this.getSlide(this.state.slideNumber);
+    return (
+      <div className="slider">
+        
+        <Article class="grid article--color-invert article--space-bottom">
+
+          <div className="slider__slide-container">
+            <img src={slide.image} />
+          </div>
+          
+          <div className="slider__controls">
+          
+          </div>
+        
+        </Article>
+      
+      </div>  
+    );
+  }
+}
+
+
+
+class ProjectsContent extends Component {
+  render() {
+    return (
+      <main className="content">
+        <ScrollToTopOnMount/>
+            <section className="content-block">
+                
+             
+                
+                <ProjectsSlider/>
+
+
+                
+            </section>
+
+          </main>
+    );
+  }
+}
+
+
 class ContactContent extends Component {
   render() {
     return (
-      <main className="content parallax__layer parallax__layer--back">
-      
+      <main className="content">
+        <ScrollToTopOnMount/>
             <section className="content-block">
-              <Article title="Adresse">
-                <div className="article__text">
-                  <Strong>75, Rue d'Ostwald</Strong>
+                <div className="grid">
+                  <div className="grid__column--12 grid__column--4--md type-center--md">
+                    <Article title="Adresse">
+                      <div className="article__text">
+                        <Strong>75, Rue d'Ostwald</Strong>
+                      </div>
+                      <div className="article__text">
+                        <Strong>67200 Strasbourg</Strong>
+                      </div>
+                    </ Article>
+                  </div>
+                  <div className="grid__column--12 grid__column--4--md  type-center--md">
+                    <Article title="En ligne">
+                      <div className="article__text">
+                        <Button type="icon" location="https://github.com/daahvidfaby">
+                          <i className="fa fa-github" aria-hidden="true"></i>
+                        </Button>
+                        <Button type="icon" location="https://twitter.com/daahvidFaby">
+                          <i className="fa fa-twitter" aria-hidden="true"></i>
+                        </Button>
+                      </div>
+                    </ Article>
+                  </div>
+                  <div className="grid__column--12 grid__column--4--md type-center--md">
+                    <Article title="Par mail">
+                      <div className="article__text">
+                        <Strong>david.faby29@gmail.com</Strong>
+                      </div>
+                    </ Article>
+                  </div>
                 </div>
-                <div className="article__text">
-                  <Strong>67200 Strasbourg</Strong>
-                </div>
-              </ Article>
-              <Article title="En ligne">
-                <div className="article__text">
-                  <Button type="icon" location="https://github.com/daahvidfaby">
-                    <i className="fa fa-github" aria-hidden="true"></i>
-                  </Button>
-                  <Button type="icon" location="https://twitter.com/daahvidFaby">
-                    <i className="fa fa-twitter" aria-hidden="true"></i>
-                  </Button>
-                </div>
-              </ Article>
-              <Article title="Par mail">
-                <div className="article__text">
-                  <Strong>david.faby29@gmail.com</Strong>
-                </div>
-              </ Article>
-              <Form>
-                <Article class="article--color-invert article--space-bottom">
-                    <Field type="text" name="firstname" title="Nom" />
-                    <Field type="text" name="lastname" title="Prénom" />
-                    <Field type="text" name="email" title="E-mail" />
-                    <Field type="textarea" name="message" title="Message" />
-                </ Article>
-                <div className="button-container">
-                  <Button type="primary">C'est parti !</Button>
-                </div>
-              </Form>
+                <div className="grid grid--justify-center margin-xs margin-y">
+                  <div className="grid__column--12 grid__column--8--md grid__column--6--lg">
+                    <Form>
+                      <Article class="article--color-invert article--space-bottom">
+                          <Field type="text" name="firstname" title="Nom" />
+                          <Field type="text" name="lastname" title="Prénom" />
+                          <Field type="text" name="email" title="E-mail" />
+                          <Field type="textarea" name="message" title="Message" />
+                      </ Article>
+                      <div className="button-container">
+                        <Button type="primary">C'est parti !</Button>
+                      </div>
+                    </Form>
+                  </div>
+                </div>  
             </section>
 
           </main>
@@ -210,23 +303,29 @@ class HomeIntro extends Component {
     };
     this.setParallaxProps = this.setParallaxProps.bind(this);
     this.startAnimation = this.startAnimation.bind(this);
-    this.startAnimation();
-    
   } 
+  componentDidMount() {
+    this.startAnimation();
+  }
+  componentWillUnmount() {
+    this.stopAnimation();
+  }
   startAnimation() {
-    
-    setInterval(() => {
-      if(window.scrollY < window.innerHeight) {
-        this.setParallaxProps();
-      }
-    }, 10);
+    if(window.scrollY < window.innerHeight) {
+      /*this.setParallaxProps();*/
+      this.setState(() => {
+      return { animationInterval : setInterval(this.setParallaxProps, 10) };
+    });
+    }
+  }
+  stopAnimation() {
+    clearInterval(this.state.animationInterval);
   }
   setParallaxProps() {
-    
     window.requestAnimationFrame(() => {
       this.setState(() => {
         return  {
-          translateTopPanel: ((window.scrollY * - 1) /3.7)
+          translateTopPanel: ((window.scrollY * - 1) /1.8)
         };
       });
     });
@@ -290,7 +389,7 @@ class Menu extends Component {
             <Link to="/" className="menu__list__link" onClick={this.handlePanel}>Présentation</Link>
           </li>
           <li className="menu__list__item">
-            <Link to="/projets" className="menu__list__link" onClick={this.handlePanel}>Projets</Link>
+            <Link to="/projects" className="menu__list__link" onClick={this.handlePanel}>Projets</Link>
           </li>
           <li className="menu__list__item">
             <Link to="/contact" className="menu__list__link" onClick={this.handlePanel}>Contact</Link>
@@ -304,66 +403,87 @@ class Menu extends Component {
 
 
 class Portfolio extends Component {
-  constructor() {
-    super();
-    this.state = {
-      translateTopPanel: 0
-    };
-    this.setParallaxProps = this.setParallaxProps.bind(this);
-    this.startAnimation = this.startAnimation.bind(this);
-    this.startAnimation();
-    
-  }
-  startAnimation() {
-    
-    setInterval(() => {
-     if(window.innerWidth < 768) {
-      console.log(window.innerWidth);
-        if(window.scrollY < window.innerHeight) {
-          this.setParallaxProps();
-        }
-      }
-    }, 10);
-  }
-  setParallaxProps() {
-    
-    window.requestAnimationFrame(() => {
-      this.setState(() => {
-        return  {
-          translateTopPanel: ((window.scrollY * - 1) /3.7)
-        };
-      });
-    });
-  }
-  
   render() {
     return (
+     
       <Router>
         <div className="wrapper">
           <header className="header">
             <Logo />
-            <Menu />
+            <Menu changeRouteHandler={this.changeRouteHandler}/>
           </header>
-          <div className="parallax">
-            <div className="parallax__layer parallax__layer--front" style={{top : this.state.translateTopPanel +"px"}}>
+          
+            <ParallaxFront>
+
+              <Route exact path="/" component={HomeIntro}/>
+              <Route path="/:page" component={PageHeader}/>
               
-              
-              <Route exact path="/" component={HomeIntro} />
-              <Route path="/contact" component={PageHeader} />
-              
-            </div>
-     
-     
-            <Route exact path="/" component={HomeContent} />
-            <Route path="/contact" component={ContactContent} topTitle="Me" mainTitle="Contacter"/>
+            </ParallaxFront>
+      
+            <ParallaxBack>    
+              <Route exact path="/" component={HomeContent} />
+              <Route path="/projects" component={ProjectsContent} />
+              <Route path="/contact" component={ContactContent} />
+            </ParallaxBack>
            
-          </div>
+         
         </div>
       </Router>
     );
   }
 }
 
+class ParallaxBack extends Component {
+render() {
+    return(
+      <div className="parallax__layer parallax__layer--back">
+        { this.props.children }
+      </div>
+    );
+  }
+}
+
+class ParallaxFront extends Component {
+  constructor() {
+      super();
+      this.state = {
+        translateTopPanel: 0
+      };
+      this.setParallaxProps = this.setParallaxProps.bind(this);
+      this.startAnimation = this.startAnimation.bind(this);
+    }
+    componentDidMount() {
+      this.setState(() => {
+        return { animationInterval : setInterval(this.startAnimation, 10) };
+      });
+    }
+    componentWillUnmount() {
+      clearInterval(this.state.animationInterval);
+    }
+    startAnimation() {
+        if(window.innerWidth < 768 && this.state.location !== '/'){
+          if(window.scrollY < window.innerHeight) {
+            this.setParallaxProps();
+          }
+        }
+    }
+    setParallaxProps() {
+      window.requestAnimationFrame(() => {
+        this.setState(() => {
+          return  {
+            translateTopPanel: ((window.scrollY * - 1) /3.7)
+          };
+        });
+      });
+    }
+  render() {
+      return(
+        <div className="wrapper parallax__layer parallax__layer--front" style={{top : this.state.translateTopPanel +"px"}}>
+          { this.props.children }
+        </div>
+      );
+  }
+}
 
 
 export default Portfolio;

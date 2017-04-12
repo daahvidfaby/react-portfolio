@@ -25,8 +25,19 @@ class PageHeader extends Component {
       return undefined;
     }
   }
+  getSubtitle() {
+    switch(this.props.location.pathname) {
+      case '/contact':
+            return 'Et si on apprenait à mieux se connaître ?';      
+      break;
+      case '/projects':
+            return 'Une sélection de mes meilleurs projets';      
+      break;
+      default:
+      return undefined;
+    }
+  }
   render() {
-      console.log(this.props);
     return (
       <section className="page-header">
         <div className="page-header__top">
@@ -35,7 +46,7 @@ class PageHeader extends Component {
         <div className="page-header__bottom">
           <h1 className="page-header__bottom__title">{this.getMainTitle()}</h1>
           <div className="page-header__bottom__text">
-            Et si on apprenait à mieux se connaître ?
+            { this.getSubtitle() }
           </div>
         </div>
       </section>
