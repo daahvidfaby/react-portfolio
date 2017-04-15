@@ -51,7 +51,7 @@ html {
 @media screen and (max-width: 991px) {
   .menu__list.js-display {
     transform: translateX(-100vw);
-  }  
+  }
 }
 
 .menu__list__item {
@@ -215,7 +215,7 @@ html {
     line-height: 1.3em;
     font-weight: 100;
     font-style: italic;
-} 
+}
 
 .content-block {
   margin-bottom: 2rem;
@@ -231,7 +231,7 @@ html {
 
 .article--color-invert {
     background-color: #342E39;
-    color: #2dba69;
+    color: #fff;
 }
 
 .article--space-bottom {
@@ -261,6 +261,17 @@ html {
   font-variant-caps: all-small-caps;
   font-size: 1.2rem;
 }
+
+.article__img {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.article__img img {
+  display: block;
+  width: 100%
+}
+
 
 .skills-block__title {
   color: #2DBA69;
@@ -325,6 +336,13 @@ html {
   line-height: 1;
   top: 0;
 }
+
+.button--icon:hover,
+.button--icon:focus,
+.button--icon:active {
+  color: #2DBA69;
+}
+
 
 .button.button--primary:hover,
 .button.button--primary:active,
@@ -424,7 +442,7 @@ html {
   .type-center--md {
     text-align: center;
   }
-} 
+}
 
 @media screen and (min-width: 991px) {
   .header {
@@ -474,4 +492,4 @@ html {
   .menu__list__link {
     font-size: 1rem;
   }
-} 
+}

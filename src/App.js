@@ -17,10 +17,13 @@ import SkillsBlock from './components/SkillsBlock';
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
 
 import './App.css';
+
 import david from './assets/img/david.jpg';
 import menu__icon from './assets/img/menu-icon.svg';
 import slide1 from './assets/img/1.jpg';
 import slide2 from './assets/img/2.jpg';
+import movieTracker from './assets/img/projects/movie-tracker.jpg';
+
 
 const skills = {
   "integration" : [
@@ -125,14 +128,14 @@ class HomeContent extends Component {
                     </p>
                   </Article>
                 </div>
-              </div>  
+              </div>
             </section>
             <section className="content-block">
               <Article title="Compétences" class="grid article--color-invert article--space-bottom">
                 <div className="grid">
                   <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
                     <SkillsBlock title="Intégration" skills={skills['integration']}/>
-                  </div> 
+                  </div>
                   <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
                     <SkillsBlock title="Développement web" skills={skills['development']}/>
                   </div>
@@ -156,12 +159,12 @@ class HomeContent extends Component {
 }
 
 
-const projectsSlides = [
+const projects = [
   {
-    image: slide1,
-    title : 'React Gmail',
-    url : 'https://github.com/daahvidfaby/project-react',
-    description: 'Lorem ipsum'
+    image: movieTracker,
+    title : 'Movie Tracker',
+    url : '/movie-tracker',
+    description: "Lors d'un mini-projet de fin de module nous avons du réaliser par groupe de deux une web app imitant le comportement d'un site d'informations sur des films ou des séries, au choix. Il a fallu s'occuper du design et de tout le développement, le tout accédant aux informations au format JSON depuis l'API OMDB. J'ai utilisé le framework CSS : Materialize css. Le tout devait être en version mobile, je vous conseille donc de réduire la taille de l'écran."
   },
   {
     image: slide2,
@@ -193,7 +196,7 @@ class ProjectsContent extends Component {
   constructor() {
     super();
     this.state = {
-      projects: projectsSlides
+      projects: projects
     }
   }
   getProjects(projects) {
@@ -203,19 +206,17 @@ class ProjectsContent extends Component {
   }
   renderProject(project, key) {
     return(
-      <div className="project" key={key}className="grid__column--12 grid__column--6--md grid__column--4--lg">
-        <Article title="Description" class="article--color-invert article--space-bottom">
-          <div className="">
-            <img src={project.image} className="slider__slide" />
+      <div className="project" key={key} className="grid__column grid__column--12 grid__column--6--md grid__column--4--lg">
+        <Article title={project.title} class="article--color-invert article--space-bottom">
+          <div className="article__img">
+            <img src={project.image} />
           </div>
-          <div className="">
             <p className="article__text">{project.description}</p>
-          </div>
         </Article>
         <div className="button-container">
           <Button type="primary" location={project.url}>Voir sur github</Button>
         </div>
-      </div>  
+      </div>
     );
   }
   render() {
@@ -224,8 +225,8 @@ class ProjectsContent extends Component {
         <ScrollToTopOnMount/>
             <section className="content-block">
               <div className="grid">
-                {this.getProjects(this.state.projects)}         
-              </div>  
+                {this.getProjects(this.state.projects)}
+              </div>
             </section>
 
           </main>
@@ -241,7 +242,7 @@ class ContactContent extends Component {
         <ScrollToTopOnMount/>
             <section className="content-block">
                 <div className="grid">
-                  <div className="grid__column--12 grid__column--4--md type-center--md">
+                  <div className="grid__column grid__column--12 grid__column--4--md type-center--md">
                     <Article title="Adresse">
                       <div className="article__text">
                         <Strong>75, Rue d'Ostwald</Strong>
@@ -285,7 +286,7 @@ class ContactContent extends Component {
                       </div>
                     </Form>
                   </div>
-                </div>  
+                </div>
             </section>
 
           </main>
@@ -303,7 +304,7 @@ class HomeIntro extends Component {
     };
     this.setParallaxProps = this.setParallaxProps.bind(this);
     this.startAnimation = this.startAnimation.bind(this);
-  } 
+  }
   componentDidMount() {
     this.startAnimation();
   }
@@ -376,7 +377,7 @@ class Menu extends Component {
   }
   render() {
     return (
-    
+
       <nav className="menu">
         <div className="menu__button">
           <a href="#" className="menu__button__link " onClick={this.handlePanel}>
@@ -396,7 +397,7 @@ class Menu extends Component {
           </li>
         </ul>
       </nav>
-    
+
     );
   }
 }
@@ -405,28 +406,28 @@ class Menu extends Component {
 class Portfolio extends Component {
   render() {
     return (
-     
+
       <Router>
         <div className="wrapper">
           <header className="header">
             <Logo />
             <Menu changeRouteHandler={this.changeRouteHandler}/>
           </header>
-          
+
             <ParallaxFront>
 
               <Route exact path="/" component={HomeIntro}/>
               <Route path="/:page" component={PageHeader}/>
-              
+
             </ParallaxFront>
-      
-            <ParallaxBack>    
+
+            <ParallaxBack>
               <Route exact path="/" component={HomeContent} />
               <Route path="/projects" component={ProjectsContent} />
               <Route path="/contact" component={ContactContent} />
             </ParallaxBack>
-           
-         
+
+
         </div>
       </Router>
     );
@@ -461,7 +462,9 @@ class ParallaxFront extends Component {
       clearInterval(this.state.animationInterval);
     }
     startAnimation() {
-        if(window.innerWidth < 768 && this.state.location !== '/'){
+        if(window.innerWidth > 768 && window.location.pathname === '/'){
+          return false;
+        } else {
           if(window.scrollY < window.innerHeight) {
             this.setParallaxProps();
           }
