@@ -20,6 +20,7 @@ import './App.css';
 import david from './assets/img/david.jpg';
 import menu__icon from './assets/img/menu-icon.svg';
 import slide1 from './assets/img/1.jpg';
+import slide2 from './assets/img/2.jpg';
 
 const skills = {
   "integration" : [
@@ -163,115 +164,68 @@ const projectsSlides = [
     description: 'Lorem ipsum'
   },
   {
-    image: '/2.png',
+    image: slide2,
     title : 'Test',
     url : 'https://github.com/daahvidfaby/react-portfolio',
     description: 'Lorem ipsum 2'
+  },
+  {
+    image: slide1,
+    title : 'React Gmail',
+    url : 'https://github.com/daahvidfaby/project-react',
+    description: 'Lorem ipsum'
+  },
+  {
+    image: slide2,
+    title : 'Test',
+    url : 'https://github.com/daahvidfaby/react-portfolio',
+    description: 'Lorem ipsum 2'
+  },
+    {
+    image: slide1,
+    title : 'React Gmail',
+    url : 'https://github.com/daahvidfaby/project-react',
+    description: 'Lorem ipsum'
   }
 ];
 
-
-class ProjectsSlider extends Component {
+class ProjectsContent extends Component {
   constructor() {
     super();
     this.state = {
-      actualSlideNumber : 0,
+      projects: projectsSlides
     }
-    this.goToSlide = this.goToSlide.bind(this);
-    this.previousSlide = this.previousSlide.bind(this);
-    this.nextSlide = this.nextSlide.bind(this);
   }
-  componentWillMount() {
-    this.setState(() => {
-      return { slide : this.getSlide(this.state.actualSlideNumber) };
+  getProjects(projects) {
+    return projects.map((project, key) => {
+      return this.renderProject(project, key)
     });
   }
-  getSlide(slideNumber) {
-    if(projectsSlides[slideNumber] === undefined) {
-      return false;
-    }
-    return projectsSlides[slideNumber];
-  }
-  goToSlide(number) {
-    console.log(number)
-    this.setState(() => {
-      return {
-        actualSlideNumber : number
-      }
-    });
-  }
-  previousSlide() {
-    let number;
-    if(this.state.actualSlideNumber <= 0) {
-      number = projectsSlides.length - 1;
-    } else {
-      number = this.state.actualSlideNumber - 1; 
-    }
-    this.goToSlide(number)
-  }
-  nextSlide() {
-    let number;
-    if(this.state.actualSlideNumber >= projectsSlides.length - 1) {
-      number = 0;
-    } else {
-      number = this.state.actualSlideNumber + 1; 
-    }
-    console.log(number)
-    
-    this.goToSlide(number)
-  }
-  render() {
-    const slide = this.getSlide(this.state.actualSlideNumber);
-    return (
-      <div className="slider">
-        
-        <Article class="grid article--color-invert article--space-bottom">
-
-          <div className="slider__slide-container">
-            <img src={slide.image} />
+  renderProject(project, key) {
+    return(
+      <div className="project" key={key}className="grid__column--12 grid__column--6--md grid__column--4--lg">
+        <Article title="Description" class="article--color-invert article--space-bottom">
+          <div className="">
+            <img src={project.image} className="slider__slide" />
           </div>
-          
-          <div className="slider__controls">
-          <Button type="icon" >
-            <i className="fa fa-chevron-left" aria-hidden="true" onClick={ this.previousSlide }></i>
-          </Button>
-          <Button type="icon">
-            <i className="fa fa-chevron-right" aria-hidden="true"  onClick={ this.nextSlide }></i>
-          </Button>
+          <div className="">
+            <p className="article__text">{project.description}</p>
           </div>
-        
         </Article>
-        
         <div className="button-container">
-          <Button type="primary" location={slide.url}>Voir sur github</Button>
+          <Button type="primary" location={project.url}>Voir sur github</Button>
         </div>
-        
-        
-        <Article title="Description" class="article--space-bottom">
-        
-          <p className="article__text">{slide.description}</p>
-        
-        </Article>
       </div>  
     );
   }
-}
-
-
-
-class ProjectsContent extends Component {
   render() {
     return (
       <main className="content">
         <ScrollToTopOnMount/>
             <section className="content-block">
-                
-             
-                
-                <ProjectsSlider/>
-
-
-                
+              <div className="grid">
+                {this.getProjects(this.state.projects)}         
+              </div>  
             </section>
 
           </main>

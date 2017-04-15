@@ -388,6 +388,11 @@ html {
 }
 
 
+.slider__slide {
+  width: 100%;
+  height: auto;
+}
+
 .slider__controls {
   display: flex;
   justify-content: space-between;
