@@ -1,0 +1,29 @@
+Créer une web app, facilement maintenable via JSON, comportant l'ensemble
+des épisodes d'une série TV ou d'une série de films (ex : Star Wars/Game Of Thrones).
+
+Pour chaque film/serie :
+
+  - Créer une page dédiée par film/episode
+
+  - Récupérer les données de IMDB relatives au film/épisode :
+    - Année de sortie,
+    - Pays de production,
+    - Acteurs principaux,
+    - Résumé (en anglais)
+    - Note des utilisateurs IMDB
+
+  - Créer une fonction de partage des données relatives à un film/épisode sur facebook et twitter
+
+
+  - Créer une interface permettant de visualiser ces résultats sur mobile
+  - Créer un menu latéral comprenant la liste des films/épisodes sélectionnés.
+
+
+Rendu :
+1) dossier de l'application fonctionnel
+2) .jpg(s) de l'application (prévoir les différents états)
+3) optionnel : notes relatives à l'application / difficultés rencontrées /
+indications concernant le processus de mise à jour
+
+Dossier : WEB3_NOM1_NOM2_NOM3
+Dossier à déposer sur Envois_MMI jusqu'à 00:00, dans la soirée de ce jour (14/01/2015).

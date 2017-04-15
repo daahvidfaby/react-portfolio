@@ -1,0 +1,25 @@
+{
+    "batman": {
+        "episodeName": ["Batman Begins", "The dark Knight", "The dark Knight Rises"]
+    },
+    "starwars": {
+        "episodeName": ["Star Wars: Episode I - The Phantom Menace",
+                        "Star Wars: Episode II - Attack of the Clones",
+                        "Star Wars: Episode III - Revenge of the Sith",
+                        "Star Wars",
+                        "Star Wars: Episode V - The Empire Strikes Back",
+                        "Star Wars: Episode VI - Return of the Jedi",
+                        "Star Wars: The Force Awakens"]
+    },
+    "harrypotter": {
+        "episodeName": ["Harry Potter and the Sorcerer's Stone",
+                        "Harry Potter and the Chamber of Secrets",
+                        "Harry Potter and the Prisoner of Azkaban",
+                        "Harry Potter and the Goblet of Fire",
+                        "Harry Potter and the Order of the Phoenix",
+                        "Harry Potter and the Half-Blood Prince",
+                        "Harry Potter and the Deathly Hallows: Part 1",
+                        "Harry Potter and the Deathly Hallows: Part 2"]
+    }
+
+}

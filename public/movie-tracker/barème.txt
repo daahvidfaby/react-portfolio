@@ -1,0 +1,13 @@
+TP Webapp mobile - barème
+
+- Webdesign : 7pt
+• Qualité de la réalisation
+• Appréhension des problématiques relatives à l'environnement mobile
+• Exhaustivité des exports
+
+- Front-end Dev : 13pt
+• Intégration efficace de l'API IMDB, présence des infos demandées (5pt)
+• Expérience responsive sur mobile (5pt)
+• Présence des fonctionnalités relatives aux réseaux sociaux twitter et facebook (3pt)
+
+- Optimisation du code (propreté du code, commentaires dans le code, optimisation des fonctions) : jusqu'à -3pt

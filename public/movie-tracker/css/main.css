@@ -1,0 +1,21 @@
+.reveal-button{
+  position: absolute;
+  right:5px;
+  top:5px;
+}
+
+.ratingPosition{
+  position: relative;
+}
+
+.ratingPosition__star, .ratingPosition__number{
+  position: absolute;
+}
+
+.ratingPosition__star{right:0;}
+
+.ratingPosition__number{
+  right: 12px;
+  top: 12px;
+  font-size: 1.5rem;
+}
