@@ -23,6 +23,10 @@ import contactContent from './content/contact';
 
 import './App.css';
 
+// text content
+import skillsContent from './content/skills';
+import aboutContent from './content/about';
+
 import david from './assets/img/david.jpg';
 import menu__icon from './assets/img/menu-icon.svg';
 import slide1 from './assets/img/1.jpg';
@@ -31,79 +35,23 @@ import movieTracker from './assets/img/projects/movie-tracker.jpg';
 import reactMail from './assets/img/projects/react-mail.jpg';
 
 
-const skills = {
-  "integration" : [
-      {
-        "name": "HTML",
-        "sub": null
-      },
-      {
-        "name": "CSS",
-        "sub": null
-      },
-      {
-        "name": "Librairies CSS",
-        "sub": "Bootstrap, MaterializeCSS"
-      }
-  ],
-  "development" : [
-      {
-        "name": "Javascript",
-        "sub": null
-      },
-      {
-        "name": "Librairies JS",
-        "sub": "jQuery, ReactJS"
-      },
-      {
-        "name": "Node.js",
-        "sub": "NPM, Express"
-      },
-      {
-        "name": "PHP",
-        "sub": "Laravel, Jelix"
-      },
-      {
-        "name": "Rest APIs",
-        "sub": "Création et communication"
-      }
-  ],
-    "automating" : [
-      {
-        "name": "Gulp",
-        "sub": null
-      },
-      {
-        "name": "Webpack",
-        "sub": null
-      },
-      {
-        "name": "Préprocesseurs CSS",
-        "sub": "Less et Sass"
-      },
-  ],
-    "interfaces" : [
-      {
-        "name": "UX Design",
-        "sub": "Réflexion autour de personas, notions d'ergonomie"
-      },
-      {
-        "name": "Maquettes et prototypes",
-        "sub": "Illustrator, Photoshop, Marvel"
-      }
-  ]
-}
-
-
-
-
-
 
 
 
 
 class HomeContent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      about: aboutContent,
+      skills: skillsContent
+    }
+  }
+  createMarkup(text) { return {__html: text}; };
   render() {
+    const about = this.state.about;
+    const skills = this.state.skills;
+    
     return (
       <main className="content">
         <ScrollToTopOnMount/>
@@ -113,25 +61,8 @@ class HomeContent extends Component {
                   <img src={david} alt="David Faby" className="content-block__image image--parallax"/>
                 </div>
                 <div className="grid__column--12 grid__column--6--md">
-                  <Article title="Présentation">
-                    <p className="article__text">
-                    Apprenti en <Strong>développement web</Strong>, j’aime
-                    réaliser des sites et des applications web
-                    interactives et modernes.</p>
-                    <p className="article__text">Plutôt orienté <Strong>Front-end</Strong>,
-                    je suis <Strong>polyvalent</Strong> lors de leur création.
-                    Pour vous, je saurais à la fois me pencher
-                    sur la conception et le développement, pour réfléchir au
-                    développement à toutes les étapes d’un
-                    projet.</p>
-                    <p className="article__text">Que ce soit sur la <Strong>réflexion</Strong> sur l’<Strong>expérience utilisateur</Strong>,
-                    l’<Strong>interface</Strong> et l’<Strong>accessibilité</Strong>, ou
-                    lors du <Strong>développement back-end</Strong> et
-                    front-end, je saurais utiliser mes
-                    compétences pour mener à bien ce projet.</p>
-                    <p className="article__text">Je sais m’intégrer à une équipe et à la fois travailler en autonomie.
-                    Ensemble, nous pourrons créer l’avenir de l’internet.
-                    </p>
+                  <Article title={about.title}>
+                    {about.text.map((text, index) => { return ( <p className="article__text" key={index} dangerouslySetInnerHTML={ this.createMarkup(text) }></p>) })}
                   </Article>
                 </div>
               </div>
@@ -163,6 +94,7 @@ class HomeContent extends Component {
     );
   }
 }
+
 
 
 const projects = [
