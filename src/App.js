@@ -274,7 +274,7 @@ class HomeIntro extends Component {
           <p className="intro__text__paragraph"><span className="intro__text__paragraph--light">Je suis</span> David Faby,</p>
           <h1 className="intro__title intro__title--close intro__title--code">Développeur<br/> Front-end</h1>
         </div>
-        <div className="intro__pattern grid__column--12 grid__column--6--md" style={{top : this.state.translateTopPanel +"px"}}></div>
+        <div className="intro__pattern grid__column--12 grid__column--6--md" style={{transform : "translateY("+this.state.translateTopPanel +"px)"}}></div>
       </section>
     );
   }

@@ -435,7 +435,6 @@ html {
     flex-direction: row-reverse;
   }
   .intro__pattern {
-    position: absolute;
     height: 152.3vh;
     right: 0;
   }
