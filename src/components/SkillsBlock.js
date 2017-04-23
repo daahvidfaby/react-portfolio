@@ -3,11 +3,10 @@ import React, {Component} from 'react';
 class SkillsBlock extends Component {
   getSkillsList(skills) {
     return skills.map(function(skill, index) {
-      let sub = (skill.sub != null ? skill.sub:'');
       return (
         <li key={index} className="skills-block__list__item">
           <span className="skills-block__list__sub-item  skills-block__list__sub-item--main">{skill.name}</span>
-          <span className="skills-block__list__sub-item  skills-block__list__sub-item--secondary">{sub}</span>
+          {(skill.sub)?<span className="skills-block__list__sub-item  skills-block__list__sub-item--secondary">{skill.sub}</span>:''}
         </li>
       );
     });

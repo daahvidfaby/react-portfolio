@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  NavLink
 } from 'react-router-dom'
 
 import PageHeader from './components/PageHeader';
@@ -15,6 +16,10 @@ import Dialog from './components/Dialog';
 import Field from './components/Field';
 import SkillsBlock from './components/SkillsBlock';
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
+
+
+import contactContent from './content/contact';
+
 
 import './App.css';
 
@@ -116,7 +121,7 @@ class HomeContent extends Component {
                     <p className="article__text">Plutôt orienté <Strong>Front-end</Strong>,
                     je suis <Strong>polyvalent</Strong> lors de leur création.
                     Pour vous, je saurais à la fois me pencher
-                    sur la conception, pour réfléchir au
+                    sur la conception et le développement, pour réfléchir au
                     développement à toutes les étapes d’un
                     projet.</p>
                     <p className="article__text">Que ce soit sur la <Strong>réflexion</Strong> sur l’<Strong>expérience utilisateur</Strong>,
@@ -134,16 +139,16 @@ class HomeContent extends Component {
             <section className="content-block">
               <Article title="Compétences" class="grid article--color-invert article--space-bottom">
                 <div className="grid">
-                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                  <div className="grid__column grid__column--12 grid__column--6--md grid__column--3--lg">
                     <SkillsBlock title="Intégration" skills={skills['integration']}/>
                   </div>
-                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                  <div className="grid__column grid__column--12 grid__column--6--md grid__column--3--lg">
                     <SkillsBlock title="Développement web" skills={skills['development']}/>
                   </div>
-                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                  <div className="grid__column grid__column--12 grid__column--6--md grid__column--3--lg">
                     <SkillsBlock title="Automatisation" skills={skills['automating']}/>
                   </div>
-                  <div className="grid__column--12 grid__column--6--md grid__column--3--lg">
+                  <div className="grid__column grid__column--12 grid__column--6--md grid__column--3--lg">
                     <SkillsBlock title="Interfaces" skills={skills['interfaces']}/>
                   </div>
                 </div>
@@ -151,7 +156,7 @@ class HomeContent extends Component {
 
             </section>
             <div className="button-container">
-              <Button location="/contact" type="primary">Contactez-moi !</Button>
+              <Link to="/contact" className="button button--primary"> Contactez-moi </Link>
             </div>
 
           </main>
@@ -239,6 +244,12 @@ class ProjectsContent extends Component {
 
 
 class ContactContent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      content: contactContent
+    }
+  }
   render() {
     return (
       <main className="content">
@@ -390,13 +401,13 @@ class Menu extends Component {
         </div>
         <ul className={"menu__list " + this.state.panelClassHandler}>
           <li className="menu__list__item">
-            <Link to="/" className="menu__list__link" onClick={this.handlePanel}>Présentation</Link>
+            <NavLink exact to="/" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>Présentation</NavLink>
           </li>
           <li className="menu__list__item">
-            <Link to="/projects" className="menu__list__link" onClick={this.handlePanel}>Projets</Link>
+            <NavLink to="/projects" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>Projets</NavLink>
           </li>
           <li className="menu__list__item">
-            <Link to="/contact" className="menu__list__link" onClick={this.handlePanel}>Contact</Link>
+            <NavLink to="/contact" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>Contact</NavLink>
           </li>
         </ul>
       </nav>
