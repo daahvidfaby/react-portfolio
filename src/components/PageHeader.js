@@ -48,6 +48,9 @@ class PageHeader extends Component {
           <div className="page-header__bottom__text">
             { this.getSubtitle() }
           </div>
+          <div className="page-header__arrow">
+            <i className="fa fa-chevron-down" aria-hidden="true"></i>
+          </div>
         </div>
       </section>
     );

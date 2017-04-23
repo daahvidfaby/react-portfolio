@@ -58,9 +58,21 @@ html {
   margin-top: 2rem;
 }
 
-.menu__list__link {
+.menu__list__link,
+.menu__list__link:hover,
+.menu__list__link:active,
+.menu__list__link:focus {
   color: #000;
 }
+
+.menu__list__link {
+  font-style: italic;
+}
+
+.menu__list__link.active {
+    border-bottom: 2px solid #2DBA69;
+    font-style: normal;
+  }
 
 .menu {
   text-align: right;
@@ -203,6 +215,8 @@ html {
   height: 75vh;
   color: #fff;
   background-color: #2DBA69;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-header__bottom__title {
@@ -213,8 +227,15 @@ html {
 .page-header__bottom__text {
     font-size: 1.3rem;
     line-height: 1.3em;
-    font-weight: 100;
+    font-weight: 300;
     font-style: italic;
+}
+
+.page-header__arrow {
+    margin-top: auto;
+    padding-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .content-block {
@@ -282,7 +303,6 @@ html {
 .skills-block__list {
   color: #fff;
   list-style-type: none;
-  padding-left: 0.5rem;
 }
 
 .skills-block__list__item {
