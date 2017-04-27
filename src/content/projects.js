@@ -20,9 +20,9 @@ export default [
   },
   {
     image: slide1,
-    title : 'React Gmail',
-    url : 'https://github.com/daahvidfaby/project-react',
-    description: 'Lorem ipsum'
+    title : 'React Watch',
+    url : 'https://github.com/daahvidfaby/react-watch',
+    description: 'Premier projet réalisé avec ReactJS. Seules les aiguilles de la montre se mettent à jour grâce à la fonction setState(), principe de base du framework.'
   },
   {
     image: slide2,
