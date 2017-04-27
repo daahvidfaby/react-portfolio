@@ -1,5 +1,6 @@
 import movieTracker from '../assets/img/projects/movie-tracker.jpg';
 import reactMail from '../assets/img/projects/react-mail.jpg';
+import reactWatch from '../assets/img/projects/react-watch.png';
 import slide1 from '../assets/img/1.jpg';
 import slide2 from '../assets/img/2.jpg';
 
@@ -19,7 +20,7 @@ export default [
     description: "Projet à réaliser obligatoirement avec le framework ReactJS. C'est un client gmail utilisant l'API de google en Javascript pour obtenir les différentes informations de la personne se connectant ainsi que ses e-mails. Aucune donnée n'est sauvegardée donc n'ayez pas peur de donner l'autorisation à accéder à votre compte pour la démo."
   },
   {
-    image: slide1,
+    image: reactWatch,
     title : 'React Watch',
     url : '/react-watch',
     description: 'Premier projet réalisé avec ReactJS. Seules les aiguilles de la montre se mettent à jour grâce à la fonction setState(), principe de base du framework.',
