@@ -21,8 +21,9 @@ export default [
   {
     image: slide1,
     title : 'React Watch',
-    url : 'https://github.com/daahvidfaby/react-watch',
-    description: 'Premier projet réalisé avec ReactJS. Seules les aiguilles de la montre se mettent à jour grâce à la fonction setState(), principe de base du framework.'
+    url : '/react-watch',
+    description: 'Premier projet réalisé avec ReactJS. Seules les aiguilles de la montre se mettent à jour grâce à la fonction setState(), principe de base du framework.',
+    buttonText: 'Voir la démo'
   },
   {
     image: slide2,
