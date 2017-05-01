@@ -1,6 +1,7 @@
 import movieTracker from '../assets/img/projects/movie-tracker.jpg';
 import reactMail from '../assets/img/projects/react-mail.jpg';
 import reactWatch from '../assets/img/projects/react-watch.png';
+import paperPlane from '../assets/img/projects/paper-plane.jpg';
 import slide1 from '../assets/img/1.jpg';
 import slide2 from '../assets/img/2.jpg';
 
@@ -27,10 +28,11 @@ export default [
     buttonText: 'Voir la démo'
   },
   {
-    image: slide2,
-    title : 'Test',
-    url : 'https://github.com/daahvidfaby/react-portfolio',
-    description: 'Lorem ipsum 2'
+    image: paperPlane,
+    title : 'Paper Plane',
+    url : '/paper-plane',
+    description: 'Lorem ipsum lqskdjqsljd qslkd qslkdj qslkj dqslkj qdskl',
+    buttonText: 'Voir la démo'
   },
     {
     image: slide1,
