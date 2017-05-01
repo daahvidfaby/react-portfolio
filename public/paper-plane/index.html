@@ -1,205 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1">
-  <title>Hasta Voyages</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/jquery-1.11.3.min.js"></script>
-  <script src="js/nav.js"></script>
-</head>
-<body>
-  
-<header class="clearfix">
-  <div class="wrapper">
-    <div class="fl logo">
-      <a href="index.html">
-        <img src="img/logo-noir.png" alt="Logo Hasta Voyages">
-      </a> 
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Paper Plane</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="jeu">
+        <div id="ptpmu4"></div>
+      </div>
+      <div class="intro">
+        <div class="modif">Emmène cet avion en papier le plus loin possible ! Evite les oiseaux, et sois le plus rapide !
+          <br><br>
+          <form action="#">
+            <label for="skin">Modifier l'apparence de votre avion :</label>
+            <select name="skin" id="skin">
+              <option value="blanc" selected>Blanc (defaut)</option>
+              <option value="rose">Rose</option>
+              <option value="bleu">Bleu</option>
+            </select>
+          </form>
+        </div>
+        <div class="score">
+          <h2>High score</h2>
+          <table>
+          </table>
+        </div>
+      </div>
     </div>
-    <nav class="fl">
-      <ul class="inbl">
-        <li class="current"><a href="index.html">Accueil</a></li>
-        <li><a href="inspiration.html">Inspiration</a></li>
-        <li><a href="catalogue.html">Catalogue</a></li>
-      </ul>
-    </nav>
-    <div class="fr login">
-      <div class="fl login-nav">
-        <ul class="inbl">
-          <li><a href="inscription.html">Inscription</a></li>
-          <li><a href="#" onclick="alert('Cette fonctionnalité n\'est pas encore disponible')">Connexion</a></li>
-        </ul>
-      </div>
-      <div class="fr avatar">
-        <img src="img/avatar.png" alt="profil">
-        </div>
+    <div class="footer">
+      <span>David Faby - Hugo Stehli - Pauline Schnee - Marianne Vivat</span>
     </div>
-  </div>
-</header>
-  
-  <section>
-    <div class="index-slider">
-      <div class="slider-background">
-        </div>
-        <div class="slider-text wrapper">Vivez l'Espagne</div>
-        <div class="slider-search clearfix">
-          <div class="wrapper">
-            <form  class="search-form">
-              <input type="text" placeholder="Entrez une destination">
-              <input type="submit" value="Rechercher" onclick="alert('Cette fonctionnalité n\'est pas encore disponible')">
-            </form>
-          </div>
-        </div>
-    </div>
-  </section>
-  <section class="main">
-    <article>
-      <div class="clearfix actu wrapper">
-        <div class="left">
-          <h3>Découvrez les meilleures soirées de votre vie</h3>
-          <p>Etudiants, nous avons concocté des vacances à prix d'amis !</p>
-          <a href="sejour.html?num-sejour=1" class="btn">Plus d'infos !</a>
-        </div>
-        <div class="right">
-          <div class="top">Bon plan</div>
-          <img src="img/ibiza-slider.jpg" alt="">
-        </div>
-      </div>
-    </article>
-    <article>
-      <div class="clearfix wrapper">
-        <h2>Circuits</h2>
-        <div class="row row-3">
-          <div class="cell">
-            <a href="sejour.html?num-sejour=7">
-            <img src="img/seville-slider.jpg" alt="">
-            <div class="price">110 €</div>
-            <div class="desc">Séville</div>
-            </a>
-          </div>
-          <div class="cell">
-            <a href="sejour.html?num-sejour=8">
-            <img src="img/madrid-slider.jpg" alt="">
-            <div class="price">145 €</div>
-            <div class="desc">Madrid</div>
-            </a>
-          </div>
-          <div class="cell">
-            <a href="sejour.html?num-sejour=6">
-            <img src="img/gibraltar-slider.jpg" alt="">
-            <div class="price">90 €</div>
-            <div class="desc">Gibraltar</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      </div>
-    </article>
-    <article>
-      <div class="clearfix wrapper">
-        <h2>Fête</h2>
-        <div class="row row-2">
-          <div class="cell">
-            <a href="sejour.html?num-sejour=0">
-            <img src="img/barcelone-slider.jpg" alt="">
-            <div class="price">195 €</div>
-            <div class="desc">Barcelone</div>
-            </a>
-          </div>
-          <div class="cell">
-            <a href="sejour.html?num-sejour=2">
-            <img src="img/majorque-slider.jpg" alt="">
-            <div class="price">205 €</div>
-            <div class="desc">Majorque</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      </div>
-    </article>
-    <article>
-      <div class="clearfix wrapper">
-        <h2>Séjours sportifs</h2>
-        <div class="row row-3">
-          <div class="cell">
-            <a href="sejour.html?num-sejour=5">
-            <img src="img/malaga-slider.jpg" alt="">
-            <div class="price">295 €</div>
-            <div class="desc">Malaga</div>
-            </a>
-          </div>
-          <div class="cell">
-            <a href="sejour.html?num-sejour=4">
-            <img src="img/st-jean-slider.jpg" alt="">
-            <div class="price">275 €</div>
-            <div class="desc">Saint-Jean Pied de Port</div>
-            </a>
-          </div>
-          <div class="cell">
-            <a href="sejour.html?num-sejour=3">
-            <img src="img/murrillo-slider.jpg" alt="">
-            <div class="price">310 €</div>
-            <div class="desc">Saragosse</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      </div>
-    </article>
-  </section>
-  
-  <footer>
-  <div class="wrapper table">
-    <div class="entreprise-desc">
-      <img src="img/logo-blanc.png" alt="Logo Hasta Voyages">
-      <p>Créee en 2015, Hasta Voyages est une agence qui a pour but de permettre aux jeunes de partir à moindres frais tout en conservant une qualité maximale. Toujours soucieuse des besoins et attentes de clients à la recherche du voyage parfait, notre équipe propose une site internet fluide et intuitif pour vous aider à trouver le voyage qui vous correspond.</p>
-    </div>
-    <div class="site-plan">
-      <h4>Plan du site</h4>
-      <ul>
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Inspiration</a></li>
-        <li><a href="#">Catalogue</a></li>
-        <li><a href="#">Inscription</a></li>
-      </ul>
-    </div>
-    <div class="contact">
-      <h4>Contact</h4>
-      <ul class="info">
-        <li>18, rue d'Alsace</li>
-        <li>67000 Strasbourg</li>
-        <li>contact@hasta-voyages.fr</li>
-      </ul>
-      <ul class="social inbl">
-        <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>
-        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-      </ul>
-    </div>
-    
-  </div>
-</footer>
-<div id="sidebar">
-  <a href="#" class="font-menu">&#9776;</a>
-  <nav id="navigation">
-    <ul>
-      <li class="current"><a href="#">Accueil</a>
-      </li>
-      <li><a href="#">Inspiration</a>
-      </li>
-      <li><a href="#">Catalogue</a>
-      </li>
-      <li><a href="#">Connexion</a>
-      </li>
-      <li><a href="#">Inscription</a>
-      </li>
-    </ul>
-  </nav>
-</div>
-
-</body>
+    </body>
+    </html>
+    <script src="assets/js/jquery-1.12.2.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="js/phaser.js"></script>
+    <script src="js/game.js"></script>
+  </body>
 </html>
