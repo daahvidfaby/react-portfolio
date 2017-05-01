@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hasta Voyages</title>
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/datepicker-fr.js"></script>
+  <script src="js/sejour.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
+    $( "#datepicker2" ).datepicker( $.datepicker.regional[ "fr" ] );
+  });
+  </script>
+</head>
+<body>
+  
+<header class="clearfix">
+  <div class="wrapper">
+    <div class="fl logo">
+      <a href="index.html">
+        <img src="img/logo-noir.png" alt="Logo Hasta Voyages">
+      </a>  
+    </div>
+    <nav class="fl">
+      <ul class="inbl">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="inspiration.html">Inspiration</a></li>
+        <li><a href="catalogue.html">Catalogue</a></li>
+      </ul>
+    </nav>
+    <div class="fr login">
+      <div class="fl login-nav">
+        <ul class="inbl">
+          <li><a href="inscription.html">Inscription</a></li>
+          <li><a href="#" onclick="alert('Cette fonctionnalité n\'est pas encore disponible')">Connexion</a></li>
+        </ul>
+      </div>
+      <div class="fr avatar">
+        <img src="img/avatar.png" alt="profil">
+        </div>
+    </div>
+  </div>
+</header>
+  
+  
+  <section class="main">
+    <article class="wrapper">
+      <div class="sejour">
+        <div class="city">
+          <div class="img" id="image-ville"></div>
+          <h2 class="name" id="nom-ville"></h2>
+          <div class="desc" id="description-ville"></div>
+          <ul class="share">
+              <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        <div class="right">
+          <div class="slider" id="slider-sejour"></div>
+          <div class="sejour-row">
+            <div class="infos">
+              <h3 id="nom-sejour"></h3>
+                <p id="description-sejour"></p>
+              <div class="more">
+                <h4>Informations pratiques</h4>
+                <ul class="table">
+                  <li>
+                    <i class="fa fa-wifi"></i>
+                    <div class="desc">Wifi</div>
+                  </li>
+                  <li>
+                    <i class="fa fa-paw"></i>
+                    <div class="desc">Animaux autorisés</div>
+                  </li>
+                  <li>
+                    <i class="fa fa-television"></i>
+                    <div class="desc">Télévision</div>
+                  </li>
+                  <li>
+                    <i class="fa fa-coffee"></i>
+                    <div class="desc">Petit déjeuner</div>
+                  </li>
+                </ul>
+              </div> 
+            </div>
+            <div class="quick-reserv">
+              <div class="head clearfix">
+                <div class="fl price" id="prix-sejour"></div>
+                <div class="fr time">la semaine</div>
+              </div>
+              <div>
+                <form action="recapitulatif.php" method="post">
+                  <label for="date-arrivee">Date d'arrivée :</label>
+                  <input type="text" id="datepicker" name="date-arrivee" placeholder="Entrez une date">
+                  <label for="date-depart">Date de départ :</label>
+                  <input type="text" id="datepicker2" name="date-depart" placeholder="Entrez une date">
+                  <label for="voyageurs">Nombre de voyageurs :</label>
+                  <select name="nb-voyageurs" id="voyageurs">
+                    <option value="1">1</option>
+                    <option value="1">2</option>
+                    <option value="1">3</option>
+                    <option value="1">4</option>
+                    <option value="5">5+</option>
+                  </select>
+                  <input type="hidden" value="" name="nom-ville" id="nom-ville-hidden">
+                  <input type="submit" value="Réserver">
+                </form>
+                <div class="user-note clearfix">
+                  <p class="fl">Note des utilisateurs :</p>
+                  <ul class="inbl fr" id="note-utilisateur"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+  
+  <footer>
+  <div class="wrapper table">
+    <div class="entreprise-desc">
+      <img src="img/logo-blanc.png" alt="Logo Hasta Voyages">
+      <p>Créee en 2015, Hasta Voyages est une agence qui a pour but de permettre aux jeunes de partir à moindres frais tout en conservant une qualité maximale. Toujours soucieuse des besoins et attentes de clients à la recherche du voyage parfait, notre équipe propose une site internet fluide et intuitif pour vous aider à trouver le voyage qui vous correspond.</p>
+    </div>
+    <div class="site-plan">
+      <h4>Plan du site</h4>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Inspiration</a></li>
+        <li><a href="#">Catalogue</a></li>
+        <li><a href="#">Inscription</a></li>
+      </ul>
+    </div>
+    <div class="contact">
+      <h4>Contact</h4>
+      <ul class="info">
+        <li>18, rue d'Alsace</li>
+        <li>67000 Strasbourg</li>
+        <li>contact@hasta-voyages.fr</li>
+      </ul>
+      <ul class="social inbl">
+        <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+      </ul>
+    </div>
+    
+  </div>
+</footer>
+</body>
+</html>
