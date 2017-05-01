@@ -342,7 +342,6 @@ function Play() {}
 Play.prototype = {
   create: function() {
 
-
     this.gameVariables = {
       actualBackground: 1,
       ennemyTime: 0,
@@ -363,7 +362,6 @@ Play.prototype = {
     this.displayBackground(600, 13)
       // this.input.onDown.addOnce(this.startGame, this);
     this.player = new Player(this.game, this.game.world.centerX, this.game.world.centerY, 1);
-
     this.game.add.existing(this.player);
     this.numberOfTiles = 1;
     this.backgroundsNumber = 10;
@@ -379,8 +377,6 @@ Play.prototype = {
     this.meterText.anchor.setTo(1.5, -0.5);
   },
   update: function() {
-    this.game.debug.spriteBounds(this.player);
-    this.player.getBounds();
     $('#ptpmu4').find('input').remove();
     $('#ptpmu4').find('#scoreTable').remove();
     $('#ptpmu4').find('#scoreTable').css('display', 'none');
@@ -418,44 +414,40 @@ Play.prototype = {
       this.background.setAll('body.velocity.x', -400);
       this.ennemies.setAll('body.velocity.x', -500);
       this.stars.setAll('body.velocity.x', -500);
-      this.player.scale.x = 0.8;
       if (this.game.input.activePointer.y > 0 && this.game.input.activePointer.y < 200) {
-        this.player.angle = -20;
+        this.player.frame = 5;
       } else if (this.game.input.activePointer.y > 200 && this.game.input.activePointer.y < 400) {
-        this.player.angle = 0;
+        this.player.frame = 2;
       } else if (this.game.input.activePointer.y > 400 && this.game.input.activePointer.y < 800) {
-        this.player.angle = 20;
+        this.player.frame = 8;
       }
 
-    }
-    else if (this.game.input.activePointer.x < this.game.world.width - 200 && this.game.input.activePointer.x > this.game.world.width - 500) {
+    } else if (this.game.input.activePointer.x < this.game.world.width - 200 && this.game.input.activePointer.x > this.game.world.width - 500) {
       this.background.setAll('body.velocity.x', -200);
       this.ennemies.setAll('body.velocity.x', -300);
       this.stars.setAll('body.velocity.x', -300);
-      this.player.width = 180;
       if (this.game.input.activePointer.y > 0 && this.game.input.activePointer.y < 200) {
-        this.player.angle = -20;
+        this.player.frame = 4;
       } else if (this.game.input.activePointer.y > 200 && this.game.input.activePointer.y < 400) {
-        this.player.angle = 0;
+        this.player.frame = 1;
       } else if (this.game.input.activePointer.y > 400 && this.game.input.activePointer.y < 800) {
-        this.player.angle = 20;
+        this.player.frame = 7;
+      }
+    } else if (this.game.input.activePointer.x < this.game.world.width - 500 && this.game.input.activePointer.x > 0) {
+      this.background.setAll('body.velocity.x', -100);
+      this.ennemies.setAll('body.velocity.x', -200);
+      this.stars.setAll('body.velocity.x', -200);
+      if (this.game.input.activePointer.y > 0 && this.game.input.activePointer.y < 200) {
+        this.player.frame = 3;
+      } else if (this.game.input.activePointer.y > 200 && this.game.input.activePointer.y < 400) {
+        this.player.frame = 0;
+      } else if (this.game.input.activePointer.y > 400 && this.game.input.activePointer.y < 800) {
+        this.player.frame = 6;
       }
     }
-    //  else if (this.game.input.activePointer.x < this.game.world.width - 500 && this.game.input.activePointer.x > 0) {
-    //   this.background.setAll('body.velocity.x', -100);
-    //   this.ennemies.setAll('body.velocity.x', -200);
-    //   this.stars.setAll('body.velocity.x', -200);
-    //   if (this.game.input.activePointer.y > 0 && this.game.input.activePointer.y < 200) {
-    //     this.player.frame = 3;
-    //   } else if (this.game.input.activePointer.y > 200 && this.game.input.activePointer.y < 400) {
-    //     this.player.frame = 0;
-    //   } else if (this.game.input.activePointer.y > 400 && this.game.input.activePointer.y < 800) {
-    //     this.player.frame = 6;
-    //   }
-    // }
     this.ennemies.forEach(function(ennemy) {
       var collide = this.game.physics.arcade.distanceBetween(this.player, ennemy);
-      if (collide < this.player.width / 2 - 10 && this.game.physics.arcade.intersects(this.player,ennemy)) {
+      if (collide < this.player.width / 2 - 10) {
         this.deathHandler();
       }
     }, this);
@@ -496,17 +488,17 @@ Play.prototype = {
     this.gameVariables.ennemyTimeReset = this.game.rnd.integerInRange(20, 80);
   },
   starRandomGenerate: function() {
-    if (this.distance > 20) {
+    if(this.distance > 20){
       var trueOrFalse = this.game.rnd.integerInRange(0, 2);
-      if (trueOrFalse == 1) {
+      if(trueOrFalse == 1){
         this.starDisplay();
       }
     }
   },
   starDisplay: function() {
-    var starY = this.game.rnd.integerInRange(22, 588);
-    var star = new Star(this.game, 800, starY);
-    this.stars.add(star);
+      var starY = this.game.rnd.integerInRange(22, 588);
+      var star = new Star(this.game, 800, starY);
+      this.stars.add(star);
   },
   addStarScore: function() {
     this.starsScore++;
@@ -548,8 +540,7 @@ Preload.prototype = {
     this.load.setPreloadSprite(this.asset);
     this.load.spritesheet('background', 'assets/background.png', 300, 600, 19);
     this.load.spritesheet('ennemy', 'assets/oiseau.png', 60, 44, 3);
-    // this.load.spritesheet('player', 'assets/avions.png', 304, 120, 9);
-    this.load.image('player', 'assets/player.png');
+    this.load.spritesheet('player', 'assets/avions.png', 304, 120, 9);
     this.load.spritesheet('playerR', 'assets/avionsr.png', 304, 120, 9);
     this.load.spritesheet('playerB', 'assets/avionsb.png', 304, 120, 9);
     this.load.image('star', 'assets/etoile.png');
