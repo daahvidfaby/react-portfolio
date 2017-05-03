@@ -146,7 +146,7 @@ html {
 }
 
 .intro__text__paragraph--light {
-  font-weight: 300;
+  font-weight: 400;
   color: #342E39;
 }
 
@@ -163,7 +163,7 @@ html {
 
 .intro__title--code::before, .intro__title--code::after {
   color: #342E39;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .intro__title--code::before {
