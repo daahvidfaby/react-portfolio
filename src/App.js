@@ -68,7 +68,7 @@ class HomeContent extends Component {
             </section>
             <section className="content-block">
               <Article title="Compétences" class="grid article--color-invert article--space-bottom">
-                <div className="grid">
+                <div className="grid grid--no-padding">
                   <div className="grid__column grid__column--12 grid__column--6--md grid__column--3--lg">
                     <SkillsBlock title="Intégration" skills={skills['integration']}/>
                   </div>
@@ -113,7 +113,7 @@ class ProjectsContent extends Component {
   renderProject(project, key) {
     return(
       <div className="project" key={key} className="grid__column grid__column--12 grid__column--6--md grid__column--4--lg">
-        <Article title={project.title} class="article--color-invert article--space-bottom">
+        <Article title={project.title} class="article article--project /*article--color-invert*/ article--space-bottom">
           <div className="article__img">
             <img src={project.image} />
           </div>

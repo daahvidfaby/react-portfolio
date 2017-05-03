@@ -48,6 +48,7 @@ html {
   transition: transform 0.2s;
 }
 
+
 @media screen and (max-width: 991px) {
   .menu__list.js-display {
     transform: translateX(-100vw);
@@ -62,15 +63,18 @@ html {
 .menu__list__link:hover,
 .menu__list__link:active,
 .menu__list__link:focus {
-  color: #000;
+  color: #342E39;
 }
 
 .menu__list__link {
-  font-style: italic;
+  padding: 0.1rem 0.4rem;
+  font-size: 1.5rem;
 }
 
 .menu__list__link.active {
-    border-bottom: 2px solid #2DBA69;
+    /*border-bottom: 2px solid #2DBA69;*/
+    background-color: #2DBA69;
+    color: #fff;
     font-style: normal;
   }
 
@@ -81,8 +85,6 @@ html {
 .menu__button__link {
   display: block;
 }
-
-
 
 .menu__button__icon, .menu__button__text {
   display: inline-block;
@@ -102,16 +104,6 @@ html {
 .parallax {
   perspective: 1px;
   height: 100vh;
-/*  overflow-x: hidden;
-  overflow-y: auto;*/
-}
-
-.parallax__layer {
-/*  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;*/
 }
 
 .parallax__layer--front {
@@ -227,7 +219,7 @@ html {
 .page-header__bottom__text {
     font-size: 1.3rem;
     line-height: 1.3em;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
 }
 
@@ -251,8 +243,17 @@ html {
 }
 
 .article--color-invert {
-    background-color: #342E39;
-    color: #fff;
+  background-color: #342E39;
+  color: #fff;
+}
+
+.article--project {
+  background-color: #F5F5F5; 
+  height: 90%;
+}
+
+.article--project .article__title {
+  color:  #342E39;
 }
 
 .article--space-bottom {
@@ -266,13 +267,14 @@ html {
 
 .article__title {
   color: #2DBA69;
-  font-weight: bold;
+  font-weight: 600;
+  text-transform: uppercase;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
 .article__text {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   margin-bottom: 0.4rem;
 }
 
@@ -292,7 +294,6 @@ html {
   display: block;
   width: 100%
 }
-
 
 .skills-block__title {
   color: #2DBA69;
@@ -323,7 +324,7 @@ html {
   font-size: 1rem;
   font-weight: 300;
   font-style: italic;
-  line-height: 0.9;
+  line-height: 1.4rem;
   margin-bottom: 0.6rem;
 }
 
@@ -441,9 +442,15 @@ html {
   color: #fff;
 }
 
+@media screen and (max-width: 991px) {
+  .grid--no-padding .grid__column {
+    padding-left: 0;
+  }
 
-
-
+  .grid--no-padding .grid__column{
+    padding-right: 0;
+  }
+}
 
 
 @media screen and (min-width: 768px) {
@@ -494,6 +501,7 @@ html {
   .menu__list__item {
     margin: 0;
     flex: 1;
+    line-height: 2.4rem;
   }
   .intro__pattern {
     height: 152.3vh;
@@ -509,6 +517,13 @@ html {
     margin-left: 2rem;
   }
   .menu__list__link {
-    font-size: 1rem;
+    font-size: 1.05rem;
+  }
+  .grid--no-padding .grid__column:first-child {
+  padding-left: 0;
+  }
+
+  .grid--no-padding .grid__column:last-child {
+    padding-right: 0;
   }
 }
