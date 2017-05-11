@@ -276,7 +276,10 @@ class Menu extends Component {
   }
   handlePanel() {
     if(this.state.display === true) {
-      this.state.panel.classList.remove('js-display');
+      const _this = this;
+      setTimeout(function() {
+        _this.state.panel.classList.remove('js-display');
+        }, 500);  
       this.setState(() => {
         return { 'display' :  false };
       });
