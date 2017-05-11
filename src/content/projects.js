@@ -1,9 +1,8 @@
 import movieTracker from '../assets/img/projects/movie-tracker.jpg';
 import reactMail from '../assets/img/projects/react-mail.jpg';
-import reactWatch from '../assets/img/projects/react-watch.png';
+import reactWatch from '../assets/img/projects/react-watch.jpg';
 import paperPlane from '../assets/img/projects/paper-plane.jpg';
-import slide1 from '../assets/img/1.jpg';
-import slide2 from '../assets/img/2.jpg';
+
 
 export default [
   {
@@ -34,10 +33,4 @@ export default [
     description: 'Lorem ipsum lqskdjqsljd qslkd qslkdj qslkj dqslkj qdskl',
     buttonText: 'Voir la démo'
   },
-    {
-    image: slide1,
-    title : 'React Gmail',
-    url : 'https://github.com/daahvidfaby/project-react',
-    description: 'Lorem ipsum'
-  }
 ];
