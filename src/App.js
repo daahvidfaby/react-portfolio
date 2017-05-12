@@ -276,7 +276,10 @@ class Menu extends Component {
   }
   handlePanel() {
     if(this.state.display === true) {
-      this.state.panel.classList.remove('js-display');
+      const _this = this;
+      setTimeout(function() {
+        _this.state.panel.classList.remove('js-display');
+        }, 500);  
       this.setState(() => {
         return { 'display' :  false };
       });
@@ -299,13 +302,19 @@ class Menu extends Component {
         </div>
         <ul className={"menu__list " + this.state.panelClassHandler}>
           <li className="menu__list__item">
-            <NavLink exact to="/" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>Présentation</NavLink>
+            <NavLink exact to="/" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>
+              <span className="menu__list__link__text">Présentation</span>
+             </NavLink>
           </li>
           <li className="menu__list__item">
-            <NavLink to="/projects" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>Projets</NavLink>
+            <NavLink to="/projects" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>
+              <span className="menu__list__link__text">Projets</span>
+             </NavLink>
           </li>
           <li className="menu__list__item">
-            <NavLink to="/contact" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>Contact</NavLink>
+            <NavLink to="/contact" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>
+              <span className="menu__list__link__text">Contact</span>
+            </NavLink>
           </li>
         </ul>
       </nav>
