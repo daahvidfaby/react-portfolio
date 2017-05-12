@@ -1,1 +1,2 @@
-/api/*  http://test-testdavid.1d35.starter-us-east-1.openshiftapps.com/:request   200
+/api/*  http://test-testdavid.1d35.starter-us-east-1.openshiftapps.com/:splat   200
+/*    /index.html                                                       200
