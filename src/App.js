@@ -149,6 +149,7 @@ class ContactContent extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getDialogIfNeeded = this.getDialogIfNeeded.bind(this);
   }
   handleChange(e) {
     console.log(e.target.name);
@@ -177,31 +178,36 @@ class ContactContent extends Component {
       'email': this.state.email 
     };
 
-    var FormData = require('form-data');
-    var form = new FormData();
-    form.append('payload',JSON.stringify( payload ));
-
-
-    fetch(baseApiUrl + 'mail',
+    fetch('http://localhost:5000/mail',
     {
-      method: 'post',
+      method: 'POST',
       headers: {
-      'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
-      'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        'Content-Type': 'application/json'
       },
-      body: form
+      body: JSON.stringify(payload)
     }).then((result) => {
-      console.log(result);
+      return result.json();
+    }).then((json) => {
+      console.log(json);
+      this.setState({'success': json.success, 'sendMessage': json.message })
     });
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    return false;
+  getDialogIfNeeded() {
+    console.log(this.state);
+    if(this.state.success === true) {
+      return <Dialog type="success">this.state.sendMessage</Dialog>;
+    } else if(this.state.success === false) {
+      return <Dialog type="success">this.state.sendMessage</Dialog>;
+    } else {
+      return false;
+    }
   }
   render() {
     return (
       <main className="content">
         <ScrollToTopOnMount/>
             <section className="content-block">
+                {this.getDialogIfNeeded()}
                 <div className="grid">
                   <div className="grid__column grid__column--12 grid__column--4--md type-center--md">
                     <Article title="Adresse">
