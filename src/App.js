@@ -178,7 +178,7 @@ class ContactContent extends Component {
       'email': this.state.email 
     };
 
-    fetch('http://localhost:5000/mail',
+    fetch(baseApiUrl + 'mail',
     {
       method: 'POST',
       headers: {
