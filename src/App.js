@@ -177,10 +177,21 @@ class ContactContent extends Component {
       'email': this.state.email 
     };
 
+    var FormData = require('form-data');
+    var form = new FormData();
+    form.append('firstname', this.state.firstname);
+    form.append('lastname', this.state.lastname);
+    form.append('message', this.state.message);
+    form.append('email', this.state.email);
+
     fetch(baseApiUrl + 'mail',
     {
-      method: 'POST',
-      body: JSON.stringify( payload )
+      method: 'post',
+      headers: {
+      'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+      'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+      },
+      body: form
     }).then((result) => {
       console.log(result);
     });
