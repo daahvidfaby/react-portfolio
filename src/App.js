@@ -340,7 +340,8 @@ class Portfolio extends Component {
             <ParallaxFront>
 
               <Route exact path="/" component={HomeIntro}/>
-              <Route path="/:page" component={PageHeader}/>
+              <Route path="/projects" component={PageHeader}/>
+              <Route path="/contact" component={PageHeader}/>
 
             </ParallaxFront>
 
