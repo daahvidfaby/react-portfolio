@@ -5,11 +5,11 @@ class Field extends Component {
     let field;
     switch(props.type) {
       case 'textarea':
-        field = (<textarea className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} /> );  
+        field = (<textarea className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} onChange={props.onChange} /> );  
       break;
       case 'text':
       default:
-        field = (<input type={props.type} className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} /> );
+        field = (<input type={props.type} className={"form__field__input form__field__input--" + props.type}  name={props.name} id={props.name} onChange={props.onChange} /> );
         break;
     }
     

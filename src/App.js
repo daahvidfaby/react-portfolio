@@ -31,7 +31,7 @@ import ProjectsArray from './content/projects';
 import david from './assets/img/david.jpg';
 import menu__icon from './assets/img/menu-icon.svg';
 
-
+const baseApiUrl = 'https://aqueous-river-46122.herokuapp.com/'; 
 
 
 
@@ -147,6 +147,46 @@ class ContactContent extends Component {
     this.state = {
       content: contactContent
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(e) {
+    console.log(e.target.name);
+    switch (e.target.name) {
+      case 'firstname':
+        this.setState({firstname: e.target.value});
+        break;
+      case 'lastname':
+        this.setState({lastname: e.target.value});
+        break;
+      case 'email':
+        this.setState({email: e.target.value});
+        break;
+      case 'message':
+        this.setState({message: e.target.value});
+        break;
+      default:
+        return false;
+    }
+  }
+  handleSubmit() {
+    const payload =  {
+      'firstname': this.state.firstname,
+      'lastname': this.state.lastname,
+      'message': this.state.message,
+      'email': this.state.email 
+    };
+
+    fetch(baseApiUrl + 'mail',
+    {
+      method: 'POST',
+      body: JSON.stringify( payload )
+    }).then((result) => {
+      console.log(result);
+    });
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
   }
   render() {
     return (
@@ -188,13 +228,13 @@ class ContactContent extends Component {
                   <div className="grid__column--12 grid__column--8--md grid__column--6--lg">
                     <Form>
                       <Article class="article--color-invert article--space-bottom">
-                          <Field type="text" name="firstname" title="Nom" />
-                          <Field type="text" name="lastname" title="Prénom" />
-                          <Field type="text" name="email" title="E-mail" />
-                          <Field type="textarea" name="message" title="Message" />
+                          <Field type="text" name="firstname" title="Nom" onChange={this.handleChange}/>
+                          <Field type="text" name="lastname" title="Prénom" onChange={this.handleChange}/>
+                          <Field type="text" name="email" title="E-mail" onChange={this.handleChange}/>
+                          <Field type="textarea" name="message" title="Message" onChange={this.handleChange}/>
                       </ Article>
                       <div className="button-container">
-                        <Button type="primary">C'est parti !</Button>
+                        <Button type="primary" onClick={this.handleSubmit}>C'est parti !</Button>
                       </div>
                     </Form>
                   </div>
