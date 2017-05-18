@@ -152,7 +152,6 @@ class ContactContent extends Component {
     this.getDialogIfNeeded = this.getDialogIfNeeded.bind(this);
   }
   handleChange(e) {
-    console.log(e.target.name);
     switch (e.target.name) {
       case 'firstname':
         this.setState({firstname: e.target.value});
@@ -188,7 +187,6 @@ class ContactContent extends Component {
     }).then((result) => {
       return result.json();
     }).then((json) => {
-      console.log(json);
       this.setState({'success': json.success, 'sendMessage': json.message })
     });
   }
@@ -329,12 +327,16 @@ class Menu extends Component {
       })
     }
   }
-  handlePanel() {
+  handlePanel(e) {
     if(this.state.display === true) {
       const _this = this;
-      setTimeout(function() {
+      if(e.currentTarget.id === 'menubutton') {
+         _this.state.panel.classList.remove('js-display');
+      } else {
+        setTimeout(function() {
         _this.state.panel.classList.remove('js-display');
-        }, 500);  
+        }, 500);
+      }
       this.setState(() => {
         return { 'display' :  false };
       });
@@ -347,10 +349,9 @@ class Menu extends Component {
   }
   render() {
     return (
-
       <nav className="menu">
         <div className="menu__button">
-          <a href="#" className="menu__button__link " onClick={this.handlePanel}>
+          <a href="#" className="menu__button__link " onClick={this.handlePanel} id="menubutton">
             <img className="menu__button__icon" src={menu__icon} alt="Menu" />
             <div className="menu__button__text">Menu</div>
           </a>
@@ -373,7 +374,6 @@ class Menu extends Component {
           </li>
         </ul>
       </nav>
-
     );
   }
 }
