@@ -193,19 +193,20 @@ class ContactContent extends Component {
   getDialogIfNeeded() {
     console.log(this.state);
     if(this.state.success === true) {
-      return <Dialog type="success">this.state.sendMessage</Dialog>;
+      return <Dialog type="success">{this.state.sendMessage}</Dialog>;
     } else if(this.state.success === false) {
-      return <Dialog type="success">this.state.sendMessage</Dialog>;
+      return <Dialog type="error">{this.state.sendMessage}</Dialog>;
     } else {
       return false;
     }
   }
   render() {
+    let Dialog = this.getDialogIfNeeded();
     return (
       <main className="content">
         <ScrollToTopOnMount/>
             <section className="content-block">
-                {this.getDialogIfNeeded()}
+                {Dialog}
                 <div className="grid">
                   <div className="grid__column grid__column--12 grid__column--4--md type-center--md">
                     <Article title="Adresse">
