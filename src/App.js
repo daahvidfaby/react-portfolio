@@ -4,7 +4,8 @@ import {
   Route,
   Link,
   NavLink
-} from 'react-router-dom'
+} from 'react-router-dom';
+import DocumentMeta from 'react-document-meta';
 
 import PageHeader from './components/PageHeader';
 import Article from './components/Article';
@@ -16,6 +17,7 @@ import Dialog from './components/Dialog';
 import Field from './components/Field';
 import SkillsBlock from './components/SkillsBlock';
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
+
 
 
 import contactContent from './content/contact';
@@ -50,9 +52,13 @@ class HomeContent extends Component {
   render() {
     const about = this.state.about;
     const skills = this.state.skills;
+    const meta = {
+      description: 'Développeur Front-End junior, je suis un peu touche à tout. N\'hésitez pas à faire appel à moi pour tout projet web !',
+    };
     
     return (
       <main className="content">
+        <DocumentMeta {...meta} />
         <ScrollToTopOnMount/>
             <section className="content-block">
               <div className="grid grid--reverse--md">
@@ -202,6 +208,8 @@ class ContactContent extends Component {
   }
   render() {
     let Dialog = this.getDialogIfNeeded();
+
+    
     return (
       <main className="content">
         <ScrollToTopOnMount/>
