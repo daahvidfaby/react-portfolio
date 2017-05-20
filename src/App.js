@@ -139,6 +139,7 @@ class ProjectsContent extends Component {
     };
     return (
       <main className="content">
+        <DocumentMeta {...meta} />
         <ScrollToTopOnMount/>
             <section className="content-block">
               <div className="grid">
