@@ -53,6 +53,7 @@ class HomeContent extends Component {
     const about = this.state.about;
     const skills = this.state.skills;
     const meta = {
+      title: 'David Faby | Développeur Front-End à Strasbourg',
       description: 'Développeur Front-End junior, je suis un peu touche à tout. N\'hésitez pas à faire appel à moi pour tout projet web !',
     };
     
