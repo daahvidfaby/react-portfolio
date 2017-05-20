@@ -133,6 +133,10 @@ class ProjectsContent extends Component {
     );
   }
   render() {
+    const meta = {
+      title: 'David Faby | Développeur Front-End à Strasbourg - Mes projets',
+      description: 'Découvrez une sélection de mes projets. Retrouvez-les également sur https://github.com/daahvidfaby/.',
+    };
     return (
       <main className="content">
         <ScrollToTopOnMount/>
@@ -209,10 +213,13 @@ class ContactContent extends Component {
   }
   render() {
     let Dialog = this.getDialogIfNeeded();
-
-    
+    const meta = {
+      title: 'David Faby | Développeur Front-End à Strasbourg - Me contacter',
+      description: 'Contactez-moi pour toute question ou tout projet web que vous souhaitez réaliser, je me ferais un plaisir de vous répondre.',
+    };
     return (
       <main className="content">
+        <DocumentMeta {...meta} />
         <ScrollToTopOnMount/>
             <section className="content-block">
                 {Dialog}
