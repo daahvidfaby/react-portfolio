@@ -419,6 +419,10 @@ html {
     color: #fff;
 }
 
+.dialog--hide {
+  display: none;
+}
+
 .dialog__close {
     width: 3rem;
     height: 3rem;

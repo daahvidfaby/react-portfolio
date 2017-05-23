@@ -32,6 +32,7 @@ import ProjectsArray from './content/projects';
 
 import david from './assets/img/david.jpg';
 import menu__icon from './assets/img/menu-icon.svg';
+import loader from './assets/img/three-dots.svg';
 
 const baseApiUrl = 'https://aqueous-river-46122.herokuapp.com/'; 
 
@@ -157,11 +158,14 @@ class ContactContent extends Component {
   constructor() {
     super();
     this.state = {
-      content: contactContent
+      content: contactContent,
+      dialogContent: '',
+      dialogDisplay: false,
+      success: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getDialogIfNeeded = this.getDialogIfNeeded.bind(this);
+    this.handleDialogClose = this.handleDialogClose.bind(this);
   }
   handleChange(e) {
     switch (e.target.name) {
@@ -182,6 +186,11 @@ class ContactContent extends Component {
     }
   }
   handleSubmit() {
+
+    this.setState(() => {
+      return {loading : true}
+    });
+
     const payload =  {
       'firstname': this.state.firstname,
       'lastname': this.state.lastname,
@@ -199,31 +208,37 @@ class ContactContent extends Component {
     }).then((result) => {
       return result.json();
     }).then((json) => {
-      this.setState({'success': json.success, 'sendMessage': json.message })
+      this.setState({
+        success: json.success,
+        dialogDisplay: true,
+        dialogContent: json.message,
+        loading: false,
+     });
     });
   }
-  getDialogIfNeeded() {
-    console.log(this.state);
-    if(this.state.success === true) {
-      return <Dialog type="success">{this.state.sendMessage}</Dialog>;
-    } else if(this.state.success === false) {
-      return <Dialog type="error">{this.state.sendMessage}</Dialog>;
-    } else {
-      return false;
-    }
+  handleDialogClose() {
+    this.setState(() => {
+      return { dialogDisplay: false };
+    });
   }
   render() {
-    let Dialog = this.getDialogIfNeeded();
     const meta = {
       title: 'David Faby | Développeur Front-End à Strasbourg - Me contacter',
       description: 'Contactez-moi pour toute question ou tout projet web que vous souhaitez réaliser, je me ferais un plaisir de vous répondre.',
     };
+
+    let buttonContent = "C'est parti !";
+
+    if(this.state.loading === true) {
+      buttonContent = (<img src={loader} />);
+    }
+    
     return (
       <main className="content">
         <DocumentMeta {...meta} />
         <ScrollToTopOnMount/>
             <section className="content-block">
-                {Dialog}
+                <Dialog success={this.state.success} display={this.state.dialogDisplay} handleClose={this.handleDialogClose}>{this.state.dialogContent}</Dialog>;
                 <div className="grid">
                   <div className="grid__column grid__column--12 grid__column--4--md type-center--md">
                     <Article title="Adresse">
@@ -265,13 +280,12 @@ class ContactContent extends Component {
                           <Field type="textarea" name="message" title="Message" onChange={this.handleChange}/>
                       </ Article>
                       <div className="button-container">
-                        <Button type="primary" onClick={this.handleSubmit}>C'est parti !</Button>
+                        <Button type="primary" onClick={this.handleSubmit}>{buttonContent}</Button>
                       </div>
                     </Form>
                   </div>
                 </div>
             </section>
-
           </main>
     );
   }
