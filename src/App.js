@@ -404,18 +404,13 @@ class Menu extends Component {
               <span className="menu__list__link__text">Contact</span>
             </NavLink>
           </li>
-          <li className="menu__list__item">
-            <a href="/cv-davidfaby.pdf" className="menu__list__link" activeClassName="active" onClick={this.handlePanel}>
-              <span className="menu__list__link__text">CV</span>
-            </a>
-          </li>
+         
 
         </ul>
       </nav>
     );
   }
 }
-
 
 
 
